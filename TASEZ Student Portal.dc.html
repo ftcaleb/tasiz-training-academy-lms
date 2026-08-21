@@ -213,8 +213,8 @@ a:hover { color: var(--accent-navy); }
 
     <!-- Item 2: Academics Dropdown -->
     <div class="nav-dropdown">
-      <div class="tubelight-item {{ (sCourse || sProg || sTime || sNon || sModule || sPractical || sLogbook || sQuiz || sQResults || sExam) ? 'active' : '' }}">
-        <sc-if value="{{ sCourse || sProg || sTime || sNon || sModule || sPractical || sLogbook || sQuiz || sQResults || sExam }}"><div class="tubelight-lamp"></div></sc-if>
+      <div class="tubelight-item {{ sAcad ? 'active' : '' }}">
+        <sc-if value="{{ sAcad }}"><div class="tubelight-lamp"></div></sc-if>
         Academics <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
@@ -227,8 +227,8 @@ a:hover { color: var(--accent-navy); }
 
     <!-- Item 3: Records & Finance Dropdown -->
     <div class="nav-dropdown">
-      <div class="tubelight-item {{ (sTrans || sFin) ? 'active' : '' }}">
-        <sc-if value="{{ sTrans || sFin }}"><div class="tubelight-lamp"></div></sc-if>
+      <div class="tubelight-item {{ sRec ? 'active' : '' }}">
+        <sc-if value="{{ sRec }}"><div class="tubelight-lamp"></div></sc-if>
         Records &amp; Finance <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
@@ -1209,7 +1209,7 @@ class Component extends DCLogic {
 
     return {
       nav, screenTitle:screens[st.screen], greetingText, todayDateStr,
-      sDash:st.screen==='dashboard', sCourse:st.screen==='course', sModule:st.screen==='module', sQuiz:st.screen==='quiz',
+      sDash:st.screen==='dashboard', sAcad:['course','module','quiz','qresults','exam','practical','logbook','prog','time','non'].includes(st.screen), sRec:['fin','trans'].includes(st.screen), sCourse:st.screen==='course', sModule:st.screen==='module', sQuiz:st.screen==='quiz',
       sQResults:st.screen==='qresults', sExam:st.screen==='exam', sPractical:st.screen==='practical', sLogbook:st.screen==='logbook',
       sFin:st.screen==='fin', sProg:st.screen==='prog', sTrans:st.screen==='trans', sTime:st.screen==='time', sNon:st.screen==='non',
       goDash:()=>this.go('dashboard'), goCourse:()=>this.go('course'), goNon:()=>this.go('non'), goFin:()=>this.go('fin'), goProg:()=>this.go('prog'), goTime:()=>this.go('time'), goTrans:()=>this.go('trans'),

@@ -206,8 +206,8 @@ a:hover { color: var(--accent-navy); }
 
     <!-- Item 2: Students & Intake Dropdown -->
     <div class="nav-dropdown">
-      <div class="tubelight-item {{ (vStudPipeline || vStudReg || vStudRisk || vStudStats || vQueue) ? 'active' : '' }}">
-        <sc-if value="{{ vStudPipeline || vStudReg || vStudRisk || vStudStats || vQueue }}"><div class="tubelight-lamp"></div></sc-if>
+      <div class="tubelight-item {{ vStud ? 'active' : '' }}">
+        <sc-if value="{{ vStud }}"><div class="tubelight-lamp"></div></sc-if>
         Students &amp; Intake <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
@@ -221,8 +221,8 @@ a:hover { color: var(--accent-navy); }
 
     <!-- Item 3: Academics & Quality Dropdown -->
     <div class="nav-dropdown">
-      <div class="tubelight-item {{ (vAcadSched || vAcadBuilder || vAcadAuthor || vAcadVle || vAcadCentres || vCert) ? 'active' : '' }}">
-        <sc-if value="{{ vAcadSched || vAcadBuilder || vAcadAuthor || vAcadVle || vAcadCentres || vCert }}"><div class="tubelight-lamp"></div></sc-if>
+      <div class="tubelight-item {{ vAcad ? 'active' : '' }}">
+        <sc-if value="{{ vAcad }}"><div class="tubelight-lamp"></div></sc-if>
         Academics &amp; Quality <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
