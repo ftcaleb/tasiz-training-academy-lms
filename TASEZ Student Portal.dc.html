@@ -35,15 +35,15 @@
   /* Status (Red Delta) */
   --status-red: #A22A2A;
   --status-red-bg: #FAE9E9;
-  --status-amber: #92400E;
+  --status-amber: var(--accent-navy);
   --status-amber-bg: #FEF3C7;
 
   /* Role Badges */
-  --badge-admin-bg: #F5C94C;
+  --badge-admin-bg: var(--accent-navy);
   --badge-admin-text: #17233E;
 
   /* Rank-Specific (Leaderboard ONLY) */
-  --rank-gold: #F5C94C;
+  --rank-gold: var(--accent-navy);
   --rank-silver: #CBD0DB;
   --rank-bronze: #DAA476;
 
@@ -662,7 +662,7 @@ a:hover { color: var(--accent-navy); }
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Total course cost</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;">R 94,500.00</div></div>
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">{{ finFunderLabel }}</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;color:var(--accent-blue);">{{ finFunderAmt }}</div><div style="font-size:11.5px;color:var(--text-secondary);margin-top:4px;">{{ finFunderSub }}</div></div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Outstanding balance</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;color:#B45309;">{{ finOutstanding }}</div><div style="font-size:11.5px;color:var(--text-secondary);margin-top:4px;">Next payment due {{ finNextDue }}</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Outstanding balance</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;color:var(--accent-navy);">{{ finOutstanding }}</div><div style="font-size:11.5px;color:var(--text-secondary);margin-top:4px;">Next payment due {{ finNextDue }}</div></div>
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Paid to date</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;color:var(--accent-blue);">{{ finPaid }}</div><div style="font-size:11.5px;color:var(--text-secondary);margin-top:4px;">{{ finPaidSub }}</div></div>
         </div>
         <sc-if value="{{ finSponsored }}" hint-placeholder-val="{{ true }}">
@@ -793,7 +793,7 @@ a:hover { color: var(--accent-navy); }
             <option value="all">All modules</option><option value="KM-03">KM-03 · OHS</option><option value="KM-04">KM-04 · Lean Manufacturing</option><option value="PM-02">PM-02 · Quality Inspection</option><option value="WM-01">WM-01 · Workplace</option>
           </select>
         </div>
-        <div style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:12px 18px;font-size:13px;color:#7DD3FC;"><b>EISA · External Integrated Summative Assessment:</b> 14 Oct 2026, Gerotek Assessment Centre, Pretoria West. Registration closes 5 Sep 2026.</div>
+        <div style="background:var(--bg-base);border:1px solid var(--border-color);border-radius:12px;padding:12px 18px;font-size:13px;color:var(--text-primary);"><b>EISA · External Integrated Summative Assessment:</b> 14 Oct 2026, Gerotek Assessment Centre, Pretoria West. Registration closes 5 Sep 2026.</div>
         <sc-if value="{{ ttWeek }}" hint-placeholder-val="{{ true }}">
           <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
             <sc-for list="{{ ttDays }}" as="d" hint-placeholder-count="5">
@@ -967,8 +967,8 @@ class Component extends DCLogic {
   data(){
     const S = {
       'Competent':{bg:'#F4F7FC',fg:'var(--accent-navy)'}, 'Completed':{bg:'#E8F0FB',fg:'#1B4F8A'},
-      'In progress':{bg:'#FEF3C7',fg:'#92400E'}, 'Not started':{bg:'#EEF1F5',fg:'#5B6B7C'},
-      'Signed off':{bg:'#F4F7FC',fg:'var(--accent-navy)'}, 'Awaiting supervisor':{bg:'#FEF3C7',fg:'#92400E'},
+      'In progress':{bg:'var(--bg-base)',fg:'var(--accent-navy)'}, 'Not started':{bg:'#EEF1F5',fg:'#5B6B7C'},
+      'Signed off':{bg:'#F4F7FC',fg:'var(--accent-navy)'}, 'Awaiting supervisor':{bg:'var(--bg-base)',fg:'var(--accent-navy)'},
       'Returned':{bg:'#FDECEC',fg:'#9F1239'}, 'Submitted':{bg:'#E8F0FB',fg:'#1B4F8A'}
     };
     const kn = [
@@ -1118,14 +1118,14 @@ class Component extends DCLogic {
       {day:4,time:'08:00–16:00',type:'Workplace',code:'WM-01',title:'Workplace day — Silverton Auto Components',meta:'Rosslyn plant · J. Pretorius'},
       {day:4,time:'16:00–16:30',type:'Assessment',code:'WM-01',title:'Logbook week sign-off — supervisor',meta:'J. Pretorius · Rosslyn plant'}
     ];
-    const tCol = {Class:{bar:'#38BDF8',bg:'rgba(56,189,248,0.14)'},Practical:{bar:'var(--accent-blue)',bg:'rgba(29,73,168,0.08)'},Workplace:{bar:'#C084FC',bg:'rgba(192,132,252,0.14)'},Virtual:{bar:'#22D3EE',bg:'rgba(34,211,238,0.14)'},Assessment:{bar:'#FBBF24',bg:'rgba(245,158,11,0.14)'},Moderation:{bar:'#FCA5A5',bg:'rgba(239,68,68,0.14)'}};
+    const tCol = {Class:{bar:'#38BDF8',bg:'rgba(56,189,248,0.14)'},Practical:{bar:'var(--accent-blue)',bg:'rgba(29,73,168,0.08)'},Workplace:{bar:'#C084FC',bg:'rgba(192,132,252,0.14)'},Virtual:{bar:'var(--accent-blue)',bg:'rgba(29,73,168,0.08)'},Assessment:{bar:'#FBBF24',bg:'rgba(245,158,11,0.14)'},Moderation:{bar:'#FCA5A5',bg:'rgba(239,68,68,0.14)'}};
     const weeks = [week0,week1];
     const wkLabels = ['17 – 21 August 2026','24 – 28 August 2026'];
     const dayNames = st.ttWeekIdx===0 ? ['Mon 17','Tue 18','Wed 19','Thu 20','Fri 21'] : ['Mon 24','Tue 25','Wed 26','Thu 27','Fri 28'];
     const sess = weeks[st.ttWeekIdx].filter(s=>st.ttFilter==='all'||s.code===st.ttFilter).map(s=>({...s,...tCol[s.type]}));
     const ttDays = dayNames.map((name,i)=>({name:name+' Aug', list:sess.filter(s=>s.day===i)}));
     const ttFlat = sess.map(s=>({...s, day:dayNames[s.day]+' Aug'}));
-    const monthEv = {3:['#38BDF8'],4:['#C084FC'],5:['var(--accent-blue)'],6:['#38BDF8'],7:['#C084FC'],10:['#38BDF8','#22D3EE'],11:['#C084FC'],12:['var(--accent-blue)'],13:['#38BDF8'],14:['#C084FC'],17:['#38BDF8','#38BDF8'],18:['#C084FC','#22D3EE'],19:['var(--accent-blue)','#22D3EE'],20:['#38BDF8','var(--accent-blue)'],21:['#C084FC'],24:['#38BDF8','#38BDF8'],25:['#C084FC'],26:['var(--accent-blue)','#FBBF24'],27:['#FCA5A5','#38BDF8','#22D3EE'],28:['#C084FC','#FBBF24'],31:['#FBBF24']};
+    const monthEv = {3:['#38BDF8'],4:['#C084FC'],5:['var(--accent-blue)'],6:['#38BDF8'],7:['#C084FC'],10:['#38BDF8','var(--accent-blue)'],11:['#C084FC'],12:['var(--accent-blue)'],13:['#38BDF8'],14:['#C084FC'],17:['#38BDF8','#38BDF8'],18:['#C084FC','var(--accent-blue)'],19:['var(--accent-blue)','var(--accent-blue)'],20:['#38BDF8','var(--accent-blue)'],21:['#C084FC'],24:['#38BDF8','#38BDF8'],25:['#C084FC'],26:['var(--accent-blue)','#FBBF24'],27:['#FCA5A5','#38BDF8','var(--accent-blue)'],28:['#C084FC','#FBBF24'],31:['#FBBF24']};
     const activeDays = [3, 5, 10, 12, 17, 18, 19, 20, 26, 27];
     const ttCells = [...Array(5).fill(null),...Array.from({length:31},(_,i)=>i+1)].map(d=>{
       const isActive = activeDays.includes(d);
@@ -1183,7 +1183,7 @@ class Component extends DCLogic {
       compBars:[{label:'Knowledge modules',pct:45},{label:'Practical modules',pct:55},{label:'Work experience',pct:43}],
       upNext:[
         {title:'Lean Manufacturing class',when:'Thu 20 Aug · 08:30',meta:'Room 1.4, TTA Campus · D. Khumalo',c:'#1B4F8A'},
-        {title:'KM-03 OHS Module Quiz',when:'Wed 26 Aug',meta:'Online · 15 min · attempt 2 of 3',c:'#B45309'},
+        {title:'KM-03 OHS Module Quiz',when:'Wed 26 Aug',meta:'Online · 15 min · attempt 2 of 3',c:'var(--accent-navy)'},
         {title:'Fee instalment due',when:'Mon 31 Aug',meta:'R 5,500.00 · debit order',c:'#9F1239'},
         {title:'EISA registration closes',when:'Fri 5 Sep',meta:'October 2026 sitting · Gerotek Centre',c:'var(--accent-navy)'}
       ],

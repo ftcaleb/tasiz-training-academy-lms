@@ -34,11 +34,11 @@
   /* Status (Red Delta) */
   --status-red: #A22A2A;
   --status-red-bg: #FAE9E9;
-  --status-amber: #92400E;
+  --status-amber: var(--accent-navy);
   --status-amber-bg: #FEF3C7;
 
   /* Role Badges */
-  --badge-admin-bg: #F5C94C;
+  --badge-admin-bg: var(--accent-navy);
   --badge-admin-text: #17233E;
 
   /* Flat Elevation System */
@@ -438,7 +438,7 @@ a:hover { color: var(--accent-navy); }
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">Programmes &amp; students of concern</div>
             <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="3">
-              <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#B45309;flex-shrink:0;"></span><div style="flex:1;">{{ c.text }}</div></div>
+              <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-navy);flex-shrink:0;"></span><div style="flex:1;">{{ c.text }}</div></div>
             </sc-for>
           </div>
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
@@ -569,13 +569,13 @@ a:hover { color: var(--accent-navy); }
             </div>
           </sc-for>
         </div>
-        <div style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:13px 18px;font-size:12.5px;color:#7DD3FC;"><b>QCTO final verification:</b> 2 requests pending for the June 2026 EISA cohort — verification pack submitted 04 Aug, awaiting verifier allocation.</div>
+        <div style="background:var(--bg-base);border:1px solid var(--border-color);border-radius:12px;padding:13px 18px;font-size:12.5px;color:var(--text-primary);"><b>QCTO final verification:</b> 2 requests pending for the June 2026 EISA cohort — verification pack submitted 04 Aug, awaiting verifier allocation.</div>
       </sc-if>
       <sc-if value="{{ vCert }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Issued this quarter</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">96</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Q3 2026 · 3 programmes</div></div>
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Next serial number</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:11px;color:#FFFFFF;font-variant-numeric:tabular-nums;">TTA-2026-01238</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Auto-generated · tamper-evident register</div></div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#B45309;">5</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:var(--accent-navy);">5</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
@@ -610,7 +610,7 @@ a:hover { color: var(--accent-navy); }
             <sc-for list="{{ sponsorRows }}" as="r" hint-placeholder-count="5">
               <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
                 <div style="font-weight:600;">{{ r.name }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
-                <div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#3DC98A;font-weight:600;">{{ r.grants }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.cost }}</div><div style="font-variant-numeric:tabular-nums;color:#B45309;font-weight:600;">{{ r.out }}</div>
+                <div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#3DC98A;font-weight:600;">{{ r.grants }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.cost }}</div><div style="font-variant-numeric:tabular-nums;color:var(--accent-navy);font-weight:600;">{{ r.out }}</div>
               </div>
             </sc-for>
             <div style="padding:13px 20px;font-size:12px;color:var(--accent-blue);font-weight:600;cursor:pointer;">⬇ Quarterly sponsor report · ⬇ Annual financial statement</div>
@@ -750,7 +750,7 @@ a:hover { color: var(--accent-navy); }
             </div>
           </sc-for>
         </div>
-        <div style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:13px 18px;font-size:12.5px;color:#7DD3FC;"><b>EISA / FISA management:</b> October 2026 EISA — 2 assessors and 1 moderator assigned per qualification; FISA practical observations scheduled for weeks 38–40.</div>
+        <div style="background:var(--bg-base);border:1px solid var(--border-color);border-radius:12px;padding:13px 18px;font-size:12.5px;color:var(--text-primary);"><b>EISA / FISA management:</b> October 2026 EISA — 2 assessors and 1 moderator assigned per qualification; FISA practical observations scheduled for weeks 38–40.</div>
       </sc-if>
       <sc-if value="{{ vPeopleUsers }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:16px;align-items:start;">
@@ -855,7 +855,7 @@ class Component extends DCLogic {
   S(){ return {
       goDash:()=>this.go('dashboard'), goPipeline:()=>this.go('pipeline'), goReg:()=>this.go('reg'), goRisk:()=>this.go('risk'), goStats:()=>this.go('stats'), goQueue:()=>this.go('queue'),
       goSched:()=>this.go('sched'), goBuilder:()=>this.go('builder'), goAuthor:()=>this.go('author'), goVle:()=>this.go('vle'), goCentres:()=>this.go('centres'), goCert:()=>this.go('cert'),
-      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),ok:{bg:'#E7F5EE',fg:'var(--accent-navy-dark)'}, warn:{bg:'#FEF3C7',fg:'#92400E'}, bad:{bg:'#FDECEC',fg:'#9F1239'}, info:{bg:'#E8F0FB',fg:'var(--accent-blue)'}, gray:{bg:'#EEF1F5',fg:'#5B6B7C'}}; }
+      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),ok:{bg:'#E7F5EE',fg:'var(--accent-navy-dark)'}, warn:{bg:'var(--bg-base)',fg:'var(--accent-navy)'}, bad:{bg:'#FDECEC',fg:'#9F1239'}, info:{bg:'#E8F0FB',fg:'var(--accent-blue)'}, gray:{bg:'#EEF1F5',fg:'#5B6B7C'}}; }
   v1(){
     const st = this.state, S = this.S();
     const [secTitle, secDesc] = this.getSecTitles(st.sec);
@@ -909,7 +909,7 @@ class Component extends DCLogic {
         {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'var(--accent-blue)'},
         {text:'Incident report: SEB session terminated early — KM-06 exam, learner S. Mahlatsi (under review).',when:'Yesterday 16:02',c:'#9F1239'},
         {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'var(--accent-navy)'},
-        {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'#B45309'}
+        {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'var(--accent-navy)'}
       ]
     };
   }
@@ -927,13 +927,13 @@ class Component extends DCLogic {
     const pipeline = [
       {stage:'Applied', count:84, cards:[
         {name:'Katlego Sithole',meta:'Mamelodi · Matric + N2 · applied 12 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}},
-        {name:'Annelie du Plessis',meta:'Eersterust · Matric · applied 11 Aug',tag:'Docs outstanding',...{tBg:'#FEF3C7',tFg:'#92400E'}},
+        {name:'Annelie du Plessis',meta:'Eersterust · Matric · applied 11 Aug',tag:'Docs outstanding',...{tBg:'var(--bg-base)',tFg:'var(--accent-navy)'}},
         {name:'Bongani Zwane',meta:'Soshanguve · N3 Mech · applied 09 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}}]},
       {stage:'Shortlisted', count:31, cards:[
-        {name:'Precious Maluleke',meta:'Atteridgeville · APT 74% · Automotive Prod. Tech',tag:'Interview 22 Aug',...{tBg:'#ECFAFD',tFg:'#0E7490'}},
-        {name:'Daniel Venter',meta:'Silverton · APT 68% · Mechatronics',tag:'Interview 22 Aug',...{tBg:'#ECFAFD',tFg:'#0E7490'}}]},
+        {name:'Precious Maluleke',meta:'Atteridgeville · APT 74% · Automotive Prod. Tech',tag:'Interview 22 Aug',...{tBg:'rgba(29,73,168,0.08)',tFg:'var(--accent-blue)'}},
+        {name:'Daniel Venter',meta:'Silverton · APT 68% · Mechatronics',tag:'Interview 22 Aug',...{tBg:'rgba(29,73,168,0.08)',tFg:'var(--accent-blue)'}}]},
       {stage:'Selected', count:18, cards:[
-        {name:'Refilwe Mabena',meta:'Hammanskraal · merSETA DG funded',tag:'Medical pending',...{tBg:'#FEF3C7',tFg:'#92400E'}},
+        {name:'Refilwe Mabena',meta:'Hammanskraal · merSETA DG funded',tag:'Medical pending',...{tBg:'var(--bg-base)',tFg:'var(--accent-navy)'}},
         {name:'Sizwe Ngobeni',meta:'Mabopane · Ford Supplier Park intake',tag:'Contract sent',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}}]},
       {stage:'Registered', count:12, cards:[
         {name:'Thandi Baloyi',meta:'Ga-Rankuwa · TASEZ-2026-0411 issued',tag:'✓ Enrolled',...{tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)'}},
@@ -1022,7 +1022,7 @@ class Component extends DCLogic {
         {date:'27 Aug',title:'PM-01 Engine Assembly · moderation review',type:'Moderation',tBg:'#FDF0F3',tFg:'#9F1239',assessor:'S. van der Merwe',moderator:'G. Nkuna',status:'Scheduled',...S.info},
         {date:'03 Sep',title:'PM-02 Quality Inspection · final observation',type:'Summative',tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)',assessor:'P. Ndlovu',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
         {date:'09 Sep',title:'KM-04 Lean Manufacturing · paper-based test (capture)',type:'Summative',tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)',assessor:'D. Khumalo',moderator:'—',status:'Capture due',...S.warn},
-        {date:'17 Sep',title:'Welding NQF 3 · ISA batch capture',type:'ISA',tBg:'#FFF8EB',tFg:'#92400E',assessor:'F. van Zyl',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
+        {date:'17 Sep',title:'Welding NQF 3 · ISA batch capture',type:'ISA',tBg:'var(--bg-base)',tFg:'var(--accent-navy)',assessor:'F. van Zyl',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
         {date:'14 Oct',title:'EISA · Automotive Production Technician',type:'EISA',tBg:'#FDF0F3',tFg:'#9F1239',assessor:'External (QCTO)',moderator:'External',status:'Registration',...S.warn}
       ],
       concerns:[
@@ -1054,17 +1054,17 @@ class Component extends DCLogic {
       toggleRand:()=>this.setState(s=>({rand:!s.rand})), randBg:st.rand?'var(--accent-navy)':'#C7D0DB', randLeft:st.rand?'20px':'2px',
       toggleSeb:()=>this.setState(s=>({seb:!s.seb})), sebBg:st.seb?'var(--accent-navy)':'#C7D0DB', sebLeft:st.seb?'20px':'2px',
       sebNote:st.seb?'Proctoring ON — learners must launch via Safe Exam Browser with identity check.':'Proctoring OFF — assessment opens in the standard browser.',
-      sebNoteBg:st.seb?'#E7F5EE':'#FEF3C7', sebNoteFg:st.seb?'var(--accent-navy-dark)':'#92400E',
+      sebNoteBg:st.seb?'var(--bg-base)':'var(--bg-base)', sebNoteFg:st.seb?'var(--accent-navy)':'var(--accent-navy)',
       liveRows:[
         {title:'KM-03 OHS Quiz · window open',state:'14 in progress',c:'var(--accent-navy)',pct:62,sub:'31 of 50 submitted'},
         {title:'KM-06 Final Exam (SEB) · sitting 2',state:'Live · proctored',c:'#9F1239',pct:38,sub:'9 of 24 submitted'},
-        {title:'KM-04 Lean formative',state:'Closes 09 Sep',c:'#B45309',pct:81,sub:'39 of 48 submitted'},
+        {title:'KM-04 Lean formative',state:'Closes 09 Sep',c:'var(--accent-navy)',pct:81,sub:'39 of 48 submitted'},
         {title:'Welding theory test',state:'Marked',c:'var(--accent-blue)',pct:100,sub:'28 of 28 verified'}
       ],
       vleProgs:[
         {title:'Automotive Production Technician',n:148,mode:'Blended',bg:'#E8F0FB',fg:'var(--accent-blue)'},
-        {title:'Production Supervisor NQF 5',n:64,mode:'Online',bg:'#ECFAFD',fg:'#0E7490'},
-        {title:'Lean Manufacturing short course',n:36,mode:'Online',bg:'#ECFAFD',fg:'#0E7490'},
+        {title:'Production Supervisor NQF 5',n:64,mode:'Online',bg:'rgba(29,73,168,0.08)',fg:'var(--accent-blue)'},
+        {title:'Lean Manufacturing short course',n:36,mode:'Online',bg:'rgba(29,73,168,0.08)',fg:'var(--accent-blue)'},
         {title:'Welding Application & Practice',n:52,mode:'Contact',bg:'#EEF1F5',fg:'#5B6B7C'}
       ],
       incidents:[
@@ -1298,7 +1298,7 @@ class Component extends DCLogic {
         {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'var(--accent-blue)'},
         {text:'Incident report: SEB session terminated early — KM-06 exam, learner S. Mahlatsi (under review).',when:'Yesterday 16:02',c:'#9F1239'},
         {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'var(--accent-navy)'},
-        {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'#B45309'}
+        {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'var(--accent-navy)'}
       ]
     };
   }
