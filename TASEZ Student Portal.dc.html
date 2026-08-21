@@ -858,11 +858,11 @@ a:hover { color: var(--accent-navy); }
 
               <!-- Legend Footer -->
               <div style="display:flex;gap:16px;margin-top:20px;font-size:11.5px;color:var(--text-tertiary);flex-wrap:wrap;border-top:1px solid var(--border-color);padding-top:14px;">
-                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);box-shadow: none;"></span> Class</span>
-                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);box-shadow: none;"></span> Practical</span>
-                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#C084FC;box-shadow: none;"></span> Workplace</span>
-                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#FBBF24;box-shadow: none;"></span> Assessment</span>
-                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#FCA5A5;box-shadow: none;"></span> EISA / Moderation</span>
+                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);"></span> Class</span>
+                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-navy);"></span> Practical</span>
+                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);"></span> Workplace</span>
+                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-navy);"></span> Assessment</span>
+                <span style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);"></span> EISA / Moderation</span>
               </div>
             </div>
 
@@ -878,20 +878,20 @@ a:hover { color: var(--accent-navy); }
                 </div>
 
                 <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
-                  <div style="background:rgba(56,189,248,0.12);border-left:4px solid #38BDF8;border-radius:12px;padding:12px 14px;">
-                    <div style="font-size:11px;font-weight:700;color:#38BDF8;">08:30–10:30 · Class</div>
-                    <div style="font-size:13.5px;font-weight:600;margin-top:4px;color:var(--text-primary);">OHS: PPE and safe work procedures</div>
-                    <div style="font-size:11.5px;color:var(--text-tertiary);margin-top:4px;">R. Botha · Room 2.1</div>
+                  <div style="background:var(--bg-base);border:1px solid var(--border-color);border-left:4px solid var(--accent-navy);border-radius:12px;padding:12px 14px;">
+                    <div style="font-size:11px;font-weight:700;color:var(--accent-navy);">08:30–10:30 · Class</div>
+                    <div style="font-size:13.5px;font-weight:700;margin-top:4px;color:var(--text-primary);">OHS: PPE and safe work procedures</div>
+                    <div style="font-size:11.5px;color:var(--text-secondary);font-weight:600;margin-top:4px;">R. Botha · Room 2.1</div>
                   </div>
 
-                  <div style="background:var(--bg-base);border-left:4px solid var(--accent-blue);border-radius:12px;padding:12px 14px;">
-                    <div style="font-size:11px;font-weight:700;color:var(--accent-blue);">14:00–16:00 · Practical</div>
-                    <div style="font-size:13.5px;font-weight:600;margin-top:4px;color:var(--text-primary);">Height gauge practice session</div>
-                    <div style="font-size:11.5px;color:var(--text-tertiary);margin-top:4px;">P. Ndlovu · Metrology Lab</div>
+                  <div style="background:var(--bg-base);border:1px solid var(--border-color);border-left:4px solid var(--accent-navy);border-radius:12px;padding:12px 14px;">
+                    <div style="font-size:11px;font-weight:700;color:var(--accent-navy);">14:00–16:00 · Practical</div>
+                    <div style="font-size:13.5px;font-weight:700;margin-top:4px;color:var(--text-primary);">Height gauge practice session</div>
+                    <div style="font-size:11.5px;color:var(--text-secondary);font-weight:600;margin-top:4px;">P. Ndlovu · Metrology Lab</div>
                   </div>
                 </div>
 
-                <div style="margin-top:18px;padding:12px 0;border-radius:12px;text-align:center;font-weight:700;font-size:13.5px;cursor:pointer;background:var(--accent-navy);color:var(--text-primary);box-shadow: none;" style-hover="background:var(--accent-navy);">
+                <div style="margin-top:18px;padding:12px 0;border-radius:12px;text-align:center;font-weight:700;font-size:13.5px;cursor:pointer;background:var(--accent-navy);color:#FFFFFF;box-shadow: none;">
                   Book Consultation Call
                 </div>
               </div>
@@ -1125,7 +1125,7 @@ class Component extends DCLogic {
     const sess = weeks[st.ttWeekIdx].filter(s=>st.ttFilter==='all'||s.code===st.ttFilter).map(s=>({...s,...tCol[s.type]}));
     const ttDays = dayNames.map((name,i)=>({name:name+' Aug', list:sess.filter(s=>s.day===i)}));
     const ttFlat = sess.map(s=>({...s, day:dayNames[s.day]+' Aug'}));
-    const monthEv = {3:['#38BDF8'],4:['#C084FC'],5:['var(--accent-blue)'],6:['#38BDF8'],7:['#C084FC'],10:['#38BDF8','var(--accent-blue)'],11:['#C084FC'],12:['var(--accent-blue)'],13:['#38BDF8'],14:['#C084FC'],17:['#38BDF8','#38BDF8'],18:['#C084FC','var(--accent-blue)'],19:['var(--accent-blue)','var(--accent-blue)'],20:['#38BDF8','var(--accent-blue)'],21:['#C084FC'],24:['#38BDF8','#38BDF8'],25:['#C084FC'],26:['var(--accent-blue)','#FBBF24'],27:['#FCA5A5','#38BDF8','var(--accent-blue)'],28:['#C084FC','#FBBF24'],31:['#FBBF24']};
+    const monthEv = {3:['var(--accent-blue)'],4:['var(--accent-navy)'],5:['var(--accent-blue)'],6:['var(--accent-blue)'],7:['var(--accent-navy)'],10:['var(--accent-blue)','var(--accent-navy)'],11:['var(--accent-navy)'],12:['var(--accent-blue)'],13:['var(--accent-blue)'],14:['var(--accent-navy)'],17:['var(--accent-blue)','var(--accent-blue)'],18:['var(--accent-navy)','var(--accent-blue)'],19:['var(--accent-blue)','var(--accent-blue)'],20:['var(--accent-navy)','var(--accent-blue)'],21:['var(--accent-navy)'],24:['var(--accent-blue)','var(--accent-blue)'],25:['var(--accent-navy)'],26:['var(--accent-blue)','var(--accent-navy)'],27:['var(--accent-navy)','var(--accent-blue)','var(--accent-blue)'],28:['var(--accent-navy)','var(--accent-blue)'],31:['var(--accent-navy)']};
     const activeDays = [3, 5, 10, 12, 17, 18, 19, 20, 26, 27];
     const ttCells = [...Array(5).fill(null),...Array.from({length:31},(_,i)=>i+1)].map(d=>{
       const isActive = activeDays.includes(d);
