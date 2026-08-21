@@ -10,27 +10,141 @@
 <helmet>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:'Public Sans',sans-serif;color:#E2E8F0;background:#051322;background-image:radial-gradient(1200px 600px at 80% -10%,rgba(23,138,92,.22),transparent 60%),radial-gradient(1000px 500px at -10% 20%,rgba(14,58,92,.35),transparent 55%),radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:100% 100%,100% 100%,24px 24px;min-height:100vh;}
-a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
-*{box-sizing:border-box;}
+:root {
+  /* Foundation */
+  --bg-base: #F4F7FC;
+  --bg-card: #FFFFFF;
+  --border-color: #E5E7EB;
+  --border-hover: #D1D5DB;
 
-  /* TUBELIGHT FLOATING NAVBAR STYLES */
-  .tubelight-bar { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:9999; background:rgba(8,25,45,0.92); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1.5px solid rgba(61,201,138,0.4); border-radius:9999px; padding:8px 20px; box-shadow:0 20px 50px rgba(0,0,0,0.7),0 0 30px rgba(61,201,138,0.25); display:flex; align-items:center; gap:12px; }
-  .tubelight-item { position:relative; cursor:pointer; font-size:13.5px; font-weight:600; padding:9px 18px; border-radius:9999px; color:rgba(255,255,255,0.85); transition:all 0.2s ease; display:flex; align-items:center; gap:6px; white-space:nowrap; }
-  .tubelight-item:hover { color:#3DC98A; }
-  .tubelight-item.active { background:rgba(61,201,138,0.16); color:#3DC98A; font-weight:700; }
-  .tubelight-lamp { position:absolute; top:-6px; left:50%; transform:translateX(-50%); width:30px; height:3.5px; background:#3DC98A; border-radius:9999px; box-shadow:0 -2px 10px #3DC98A,0 0 16px #3DC98A,0 0 24px rgba(61,201,138,0.8); }
-  
-  .nav-dropdown { position:relative; display:flex; align-items:center; }
-  .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); margin-top:0; padding-top:8px; background:rgba(8,25,45,0.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(61,201,138,0.35); border-radius:18px; padding:8px; box-shadow:0 20px 48px rgba(0,0,0,0.7),0 0 20px rgba(61,201,138,0.15); min-width:210px; display:flex; flex-direction:column; gap:4px; opacity:0; pointer-events:none; transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index:1000; }
-  .nav-dropdown:hover .nav-dropdown-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
-  .nav-dropdown-item { display:flex; align-items:center; gap:10px; padding:9px 14px; border-radius:10px; color:#E2E8F0; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.15s; white-space:nowrap; }
-  .nav-dropdown-item:hover { background:rgba(61,201,138,0.16); color:#3DC98A; }
+  /* Primary Accent - Deep Melsoft Navy */
+  --accent-navy: #0A1733;
+  --accent-navy-dark: #0C1B3A;
 
+  /* Secondary Accent - Crisp Cobalt/Periwinkle Blue */
+  --accent-blue: #1D49A8;
+
+  /* Text Hierarchy */
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --text-tertiary: #94A3B8;
+  --text-disabled: #7F8BA6;
+  --dash-neutral: #9EA7BD;
+
+  /* Status (Red Delta) */
+  --status-red: #A22A2A;
+  --status-red-bg: #FAE9E9;
+  --status-amber: #92400E;
+  --status-amber-bg: #FEF3C7;
+
+  /* Role Badges */
+  --badge-admin-bg: #F5C94C;
+  --badge-admin-text: #17233E;
+
+  /* Flat Elevation System */
+  --shadow-card: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'Public Sans', sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  min-height: 100vh;
+}
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { color: var(--accent-navy); }
+* { box-sizing: border-box; }
+
+/* MELSOFT STYLE TOP PILL NAVBAR */
+.tubelight-bar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tubelight-item {
+  position: relative;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.tubelight-item:hover { color: var(--text-primary); }
+.tubelight-item.active {
+  background: var(--accent-navy);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.tubelight-lamp { display: none; }
+
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  margin-top: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 6px;
+  min-width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.15s ease;
+  z-index: 1000;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown-item:hover {
+  background: var(--bg-base);
+  color: var(--accent-blue);
+}
+
+.kpi-delta-pill {
+  background: rgba(29, 73, 168, 0.08) !important;
+  color: var(--accent-blue) !important;
+  border: 1px solid rgba(29, 73, 168, 0.15) !important;
+}
 </style>
-<template id="__bundler_thumbnail" data-bg-color="#0B2C4D">
+<template id="__bundler_thumbnail" data-bg-color="var(--accent-navy)">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#0B2C4D"></rect>
+    <rect width="1200" height="800" fill="var(--accent-navy)"></rect>
     <text x="600" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="120" fill="#FFFFFF">TASEZ</text>
     <text x="600" y="470" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="64" fill="#3DC98A">TTA ADMIN</text>
   </svg>
@@ -41,7 +155,7 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
   <div class="tubelight-bar">
     <!-- Logo -->
     <div onClick="{{ goDash }}" style="display:flex;align-items:center;padding:0 6px;cursor:pointer;">
-      <img src="./tasiz-nobg-logo.png" alt="TASEZ" style="height:32px;filter:brightness(0) invert(1);display:block;margin-right:4px;">
+      <img src="./tasiz-nobg-logo.png" alt="TASEZ" style="height:32px;display:block;margin-right:4px;mix-blend-mode:multiply;object-fit:contain;">
     </div>
 
     <!-- Item 1: Overview -->
@@ -57,11 +171,11 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         Students &amp; Intake <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
-        <div class="nav-dropdown-item" onClick="{{ goPipeline }}">📊 Recruitment Pipeline</div>
-        <div class="nav-dropdown-item" onClick="{{ goReg }}">📋 Learner Register</div>
-        <div class="nav-dropdown-item" onClick="{{ goRisk }}">⚠️ At-Risk Learners</div>
-        <div class="nav-dropdown-item" onClick="{{ goStats }}">📈 Intake Statistics</div>
-        <div class="nav-dropdown-item" onClick="{{ goQueue }}">✒️ Logbook Approvals</div>
+        <div class="nav-dropdown-item" onClick="{{ goPipeline }}">Recruitment Pipeline</div>
+        <div class="nav-dropdown-item" onClick="{{ goReg }}"> Learner Register</div>
+        <div class="nav-dropdown-item" onClick="{{ goRisk }}"> At-Risk Learners</div>
+        <div class="nav-dropdown-item" onClick="{{ goStats }}"> Intake Statistics</div>
+        <div class="nav-dropdown-item" onClick="{{ goQueue }}"> Logbook Approvals</div>
       </div>
     </div>
 
@@ -72,12 +186,12 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         Academics &amp; Quality <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
-        <div class="nav-dropdown-item" onClick="{{ goSched }}">📅 Assessment Schedule</div>
-        <div class="nav-dropdown-item" onClick="{{ goBuilder }}">🛠 Curriculum Builder</div>
-        <div class="nav-dropdown-item" onClick="{{ goAuthor }}">❓ Question Bank</div>
-        <div class="nav-dropdown-item" onClick="{{ goVle }}">💻 VLE Tracking</div>
-        <div class="nav-dropdown-item" onClick="{{ goCentres }}">🏢 EISA Assessment Centres</div>
-        <div class="nav-dropdown-item" onClick="{{ goCert }}">🏅 Certification Runs</div>
+        <div class="nav-dropdown-item" onClick="{{ goSched }}"> Assessment Schedule</div>
+        <div class="nav-dropdown-item" onClick="{{ goBuilder }}"> Curriculum Builder</div>
+        <div class="nav-dropdown-item" onClick="{{ goAuthor }}"> Question Bank</div>
+        <div class="nav-dropdown-item" onClick="{{ goVle }}"> VLE Tracking</div>
+        <div class="nav-dropdown-item" onClick="{{ goCentres }}"> EISA Assessment Centres</div>
+        <div class="nav-dropdown-item" onClick="{{ goCert }}"> Certification Runs</div>
       </div>
     </div>
 
@@ -88,34 +202,34 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         Partners &amp; Operations <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
-        <div class="nav-dropdown-item" onClick="{{ goSponsors }}">💰 Sponsor Register</div>
-        <div class="nav-dropdown-item" onClick="{{ goProgs }}">📖 Programme Catalogue</div>
-        <div class="nav-dropdown-item" onClick="{{ goHosts }}">🏭 Host Employers</div>
-        <div class="nav-dropdown-item" onClick="{{ goProviders }}">🏫 Training Providers</div>
-        <div class="nav-dropdown-item" onClick="{{ goAccr }}">📜 SETA Accreditation</div>
-        <div class="nav-dropdown-item" onClick="{{ goStaff }}">👨‍🏫 Facilitators &amp; Assessors</div>
-        <div class="nav-dropdown-item" onClick="{{ goUsers }}">🔑 User Provisioning</div>
+        <div class="nav-dropdown-item" onClick="{{ goSponsors }}"> Sponsor Register</div>
+        <div class="nav-dropdown-item" onClick="{{ goProgs }}"> Programme Catalogue</div>
+        <div class="nav-dropdown-item" onClick="{{ goHosts }}"> Host Employers</div>
+        <div class="nav-dropdown-item" onClick="{{ goProviders }}"> Training Providers</div>
+        <div class="nav-dropdown-item" onClick="{{ goAccr }}"> SETA Accreditation</div>
+        <div class="nav-dropdown-item" onClick="{{ goStaff }}"> Facilitators &amp; Assessors</div>
+        <div class="nav-dropdown-item" onClick="{{ goUsers }}"> User Provisioning</div>
       </div>
     </div>
 
     <!-- Role Switcher & Avatar -->
-    <div style="display:flex;align-items:center;gap:8px;margin-left:8px;padding-left:12px;border-left:1px solid rgba(255,255,255,0.15);">
-      <div style="display:flex;background:rgba(255,255,255,0.08);border-radius:9999px;padding:3px;gap:2px;">
-        <a href="TASEZ Student Portal.dc.html" style="padding:5px 14px;border-radius:9999px;color:rgba(255,255,255,0.75);font-size:12px;font-weight:600;text-decoration:none;">Student</a>
-        <div style="padding:5px 14px;border-radius:9999px;background:#178A5C;color:#FFFFFF;font-size:12px;font-weight:700;">Admin</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-left:8px;padding-left:12px;border-left:1px solid var(--border-color);">
+      <div style="display:flex;background:var(--bg-base);border-radius:9999px;padding:3px;gap:2px;">
+        <a href="TASEZ Student Portal.dc.html" style="padding:5px 14px;border-radius:9999px;color:var(--text-secondary);font-size:12px;font-weight:600;text-decoration:none;">Student</a>
+        <div style="padding:5px 14px;border-radius:9999px;background:var(--accent-navy);color:#FFFFFF;font-size:12px;font-weight:700;">Admin</div>
       </div>
-      <div title="Nomsa Khumalo · Administrator" style="width:34px;height:34px;border-radius:50%;background:#1B4F8A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;cursor:default;">NK</div>
+      <div title="Nomsa Khumalo · Administrator" style="width:34px;height:34px;border-radius:50%;background:var(--accent-navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#FFFFFF;cursor:default;">NK</div>
     </div>
   </div>
   <div style="flex:1;padding:125px 28px 48px;">
     <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;">
         <div>
-          <div style="font-family:Archivo;font-weight:700;font-size:23px;color:#FFFFFF;letter-spacing:-.01em;">{{ secTitle }}</div>
-          <div style="font-size:13px;color:#94A3B8;margin-top:5px;">{{ secDesc }}</div>
+          <div style="font-family:Archivo;font-weight:700;font-size:23px;color:var(--text-primary);letter-spacing:-.01em;">{{ secTitle }}</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:5px;">{{ secDesc }}</div>
         </div>
         <sc-if value="{{ hasTabs }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;background:rgba(13,37,64,0.7);border:1px solid rgba(61,201,138,0.2);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap;">
+          <div style="display:flex;background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap;">
             <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
               <div onClick="{{ t.go }}" style="padding:6px 13px;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;background:{{ t.bg }};color:{{ t.fg }};white-space:nowrap;">{{ t.label }}</div>
             </sc-for>
@@ -126,46 +240,46 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vDash }}" hint-placeholder-val="{{ true }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
           <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
-            <div style="position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;">
-              <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,{{ k.c }},transparent 70%);"></div>
+            <div style="position:relative;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;">
+              <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent-navy);"></div>
               <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
                 <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">{{ k.label }}</div>
-                <span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ k.dBg }};color:{{ k.dFg }};white-space:nowrap;">{{ k.delta }}</span>
+                <span class="kpi-delta-pill" style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:rgba(29,73,168,0.08) !important;color:var(--accent-blue) !important;white-space:nowrap;">{{ k.delta }}</span>
               </div>
-              <div style="font-family:Archivo;font-weight:700;font-size:25px;margin-top:10px;color:#FFFFFF;font-variant-numeric:tabular-nums;">{{ k.value }}</div>
-              <div style="font-size:12px;color:#94A3B8;margin-top:4px;">{{ k.sub }}</div>
+              <div style="font-family:Archivo;font-weight:700;font-size:25px;margin-top:10px;color:var(--accent-navy);font-variant-numeric:tabular-nums;">{{ k.value }}</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">{{ k.sub }}</div>
             </div>
           </sc-for>
         </div>
         <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Learners per programme · 2026/27</div>
             <div style="display:flex;flex-direction:column;gap:11px;margin-top:16px;">
               <sc-for list="{{ progBarsDash }}" as="b" hint-placeholder-count="5">
                 <div>
-                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:#CBD5E1;"><span>{{ b.label }}</span><span style="font-variant-numeric:tabular-nums;">{{ b.n }}</span></div>
-                  <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ b.pct }}%;height:100%;background:linear-gradient(90deg,#1B4F8A,#178A5C);border-radius:6px;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--text-primary);"><span>{{ b.label }}</span><span style="font-variant-numeric:tabular-nums;">{{ b.n }}</span></div>
+                  <div style="height:8px;background:var(--bg-base);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ b.pct }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div>
                 </div>
               </sc-for>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
-            <div style="background:linear-gradient(120deg,#081F38,#123E6B);border-radius:16px;padding:20px 22px;color:#fff;box-shadow:0 20px 40px -28px rgba(8,31,56,.7);">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:20px 22px;color:var(--text-primary);box-shadow: none;">
               <div style="display:flex;justify-content:space-between;align-items:center;">
-                <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);">Licence utilisation</div>
-                <span style="font-size:11px;font-weight:700;color:#8FE3BD;">{{ licPct }}%</span>
+                <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Licence utilisation</div>
+                <span style="font-size:11.5px;font-weight:700;color:var(--accent-navy);">{{ licPct }}%</span>
               </div>
-              <div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:8px;">{{ licUsed }} <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,.5);">/ 500 named users</span></div>
-              <div style="height:8px;background:rgba(255,255,255,.12);border-radius:6px;margin-top:12px;overflow:hidden;"><div style="width:{{ licPct }}%;height:100%;background:linear-gradient(90deg,#178A5C,#3DC98A);border-radius:6px;box-shadow:0 0 12px rgba(61,201,138,.55);"></div></div>
-              <div style="font-size:11.5px;color:rgba(255,255,255,.55);margin-top:8px;">{{ licFree }} licences available · manage under People</div>
+              <div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:8px;color:var(--accent-navy);">{{ licUsed }} <span style="font-size:14px;font-weight:600;color:var(--text-secondary);">/ 500 named users</span></div>
+              <div style="height:8px;background:var(--bg-base);border-radius:6px;margin-top:12px;overflow:hidden;"><div style="width:{{ licPct }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div>
+              <div style="font-size:11.5px;color:var(--text-secondary);margin-top:8px;">{{ licFree }} licences available · manage under People</div>
             </div>
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;">Generate report</div>
               <div style="display:flex;gap:8px;margin-top:12px;">
-                <select value="{{ repType }}" onChange="{{ setRepType }}" style="flex:1;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:9px 10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);">
+                <select value="{{ repType }}" onChange="{{ setRepType }}" style="flex:1;border:1px solid var(--border-color);border-radius:9px;padding:9px 10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);">
                   <option>Management report</option><option>Sponsor report</option><option>SETA quarterly report</option><option>QCTO annual report</option>
                 </select>
-                <select value="{{ repPeriod }}" onChange="{{ setRepPeriod }}" style="width:110px;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:9px 10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);">
+                <select value="{{ repPeriod }}" onChange="{{ setRepPeriod }}" style="width:110px;border:1px solid var(--border-color);border-radius:9px;padding:9px 10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);">
                   <option>Monthly</option><option>Quarterly</option><option>Annual</option>
                 </select>
               </div>
@@ -173,10 +287,10 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
             </div>
           </div>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
           <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">Recent activity</div>
           <sc-for list="{{ activity }}" as="a" hint-placeholder-count="5">
-            <div style="display:flex;gap:11px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex;gap:11px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border-color);">
               <div style="width:8px;height:8px;border-radius:50%;background:{{ a.c }};box-shadow:0 0 8px {{ a.c }};margin-top:5px;flex-shrink:0;"></div>
               <div style="flex:1;font-size:13px;">{{ a.text }}</div>
               <div style="font-size:11.5px;color:#64748B;white-space:nowrap;">{{ a.when }}</div>
@@ -187,14 +301,14 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vStudPipeline }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
           <sc-for list="{{ pipeline }}" as="col" hint-placeholder-count="4">
-            <div style="background:rgba(13,37,64,0.6);border:1px solid rgba(61,201,138,0.2);border-radius:14px;padding:12px;">
+            <div style="background:var(--bg-base);border:1px solid var(--border-color);border-radius:14px;padding:12px;">
               <div style="display:flex;justify-content:space-between;align-items:center;padding:2px 6px 10px;">
-                <div style="font-size:12px;font-weight:700;color:#FFFFFF;">{{ col.stage }}</div>
-                <span style="font-size:11px;font-weight:700;background:rgba(13,37,64,0.7);border-radius:10px;padding:2px 8px;color:#94A3B8;">{{ col.count }}</span>
+                <div style="font-size:12px;font-weight:700;color:var(--text-primary);">{{ col.stage }}</div>
+                <span style="font-size:11px;font-weight:700;background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;padding:2px 8px;color:var(--text-secondary);">{{ col.count }}</span>
               </div>
               <div style="display:flex;flex-direction:column;gap:8px;">
                 <sc-for list="{{ col.cards }}" as="c" hint-placeholder-count="3">
-                  <div style="background:rgba(13,37,64,0.7);border:1px solid rgba(61,201,138,0.2);border-radius:11px;padding:12px;box-shadow:0 1px 2px rgba(11,44,77,.05);">
+                  <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:11px;padding:12px;box-shadow:0 1px 2px rgba(11,44,77,.05);">
                     <div style="font-size:13px;font-weight:600;">{{ c.name }}</div>
                     <div style="font-size:11.5px;color:#64748B;margin-top:3px;">{{ c.meta }}</div>
                     <div style="display:flex;gap:6px;margin-top:8px;"><span style="font-size:10.5px;font-weight:600;background:{{ c.tBg }};color:{{ c.tFg }};border-radius:10px;padding:2px 8px;">{{ c.tag }}</span></div>
@@ -204,26 +318,26 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
             </div>
           </sc-for>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:16px 20px;display:flex;gap:26px;flex-wrap:wrap;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:16px 20px;display:flex;gap:26px;flex-wrap:wrap;">
           <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">214</b> applications · 2026/27 intake</div>
           <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">38%</b> shortlist conversion</div>
           <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">1,847</b> on recruitment mailing list</div>
           <div style="flex:1;"></div>
-          <div style="font-size:12.5px;color:#3DC98A;font-weight:600;cursor:pointer;">⬇ Export mailing list (CSV)</div>
+          <div style="font-size:12.5px;color:var(--accent-blue);font-weight:600;cursor:pointer;">⬇ Export mailing list (CSV)</div>
         </div>
       </sc-if>
       <sc-if value="{{ vStudReg }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-          <input value="{{ regSearch }}" onChange="{{ setRegSearch }}" placeholder="Search learner name or ID number…" style="flex:1;max-width:340px;min-width:220px;border:1px solid rgba(61,201,138,0.25);border-radius:10px;padding:10px 14px;font-size:13px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);">
-          <select value="{{ regYear }}" onChange="{{ setRegYear }}" style="border:1px solid rgba(61,201,138,0.25);border-radius:10px;padding:10px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);"><option>2026/27</option><option>2025/26</option></select>
-          <select value="{{ regProject }}" onChange="{{ setRegProject }}" style="border:1px solid rgba(61,201,138,0.25);border-radius:10px;padding:10px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);"><option value="all">All projects</option><option>Ford Supplier Park Intake</option><option>merSETA DG 2025/26</option><option>W&amp;RSETA Retail Auto</option></select>
+          <input value="{{ regSearch }}" onChange="{{ setRegSearch }}" placeholder="Search learner name or ID number…" style="flex:1;max-width:340px;min-width:220px;border:1px solid var(--border-color);border-radius:10px;padding:10px 14px;font-size:13px;font-family:'Public Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);">
+          <select value="{{ regYear }}" onChange="{{ setRegYear }}" style="border:1px solid var(--border-color);border-radius:10px;padding:10px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);"><option>2026/27</option><option>2025/26</option></select>
+          <select value="{{ regProject }}" onChange="{{ setRegProject }}" style="border:1px solid var(--border-color);border-radius:10px;padding:10px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);color:var(--text-primary);"><option value="all">All projects</option><option>Ford Supplier Park Intake</option><option>merSETA DG 2025/26</option><option>W&amp;RSETA Retail Auto</option></select>
           <div style="flex:1;"></div>
           <div style="font-size:12.5px;color:#94A3B8;">{{ regCount }} learners</div>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="display:grid;grid-template-columns:1.3fr 1.1fr 1.4fr 1.1fr 100px 110px;padding:12px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;border-bottom:1px solid #E3E8EF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;"><div>Learner</div><div>SA ID</div><div>Qualification · Project</div><div>Sponsor</div><div>Cost/learner</div><div>Status</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="display:grid;grid-template-columns:1.3fr 1.1fr 1.4fr 1.1fr 100px 110px;padding:12px 20px;background:var(--bg-base);color:var(--text-primary);border-bottom:1px solid var(--border-color);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;"><div>Learner</div><div>SA ID</div><div>Qualification · Project</div><div>Sponsor</div><div>Cost/learner</div><div>Status</div></div>
           <sc-for list="{{ regRows }}" as="r" hint-placeholder-count="6">
-            <div style="display:grid;grid-template-columns:1.3fr 1.1fr 1.4fr 1.1fr 100px 110px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.3fr 1.1fr 1.4fr 1.1fr 100px 110px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:13px;align-items:center;">
               <div><div style="font-weight:600;">{{ r.name }}</div><div style="font-size:11.5px;color:#64748B;">{{ r.loc }}</div></div>
               <div style="color:#94A3B8;font-variant-numeric:tabular-nums;font-size:12.5px;">{{ r.said }}</div>
               <div style="font-size:12.5px;">{{ r.qual }}<div style="font-size:11.5px;color:#64748B;">{{ r.project }}</div></div>
@@ -236,10 +350,10 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       </sc-if>
       <sc-if value="{{ vStudRisk }}" hint-placeholder-val="{{ false }}">
         <div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border:1px solid #F2C4CB;border-radius:12px;padding:13px 18px;font-size:13px;color:#FCA5A5;font-weight:600;">7 learners currently flagged at risk of not completing — early intervention required per QMS procedure TTA-QMS-014.</div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1.6fr 140px;padding:12px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;border-bottom:1px solid #E3E8EF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;"><div>Learner</div><div>Programme</div><div>Attendance · Avg</div><div>Risk reason</div><div>Intervention</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1.6fr 140px;padding:12px 20px;background:var(--bg-base);color:var(--text-primary);border-bottom:1px solid var(--border-color);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;"><div>Learner</div><div>Programme</div><div>Attendance · Avg</div><div>Risk reason</div><div>Intervention</div></div>
           <sc-for list="{{ riskRows }}" as="r" hint-placeholder-count="5">
-            <div style="display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1.6fr 140px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1.6fr 140px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:13px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div>
               <div style="font-size:12.5px;color:#94A3B8;">{{ r.prog }}</div>
               <div style="font-variant-numeric:tabular-nums;color:#FCA5A5;font-weight:600;font-size:12.5px;">{{ r.stats }}</div>
@@ -252,32 +366,32 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vStudStats }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
           <sc-for list="{{ studKpis }}" as="k" hint-placeholder-count="4">
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;">
               <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">{{ k.label }}</div>
               <div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">{{ k.value }}</div>
-              <div style="font-size:12px;color:#94A3B8;margin-top:4px;">{{ k.sub }}</div>
+              <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">{{ k.sub }}</div>
             </div>
           </sc-for>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Geographic distribution · Gauteng</div>
             <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px;">
               <sc-for list="{{ geoBars }}" as="g" hint-placeholder-count="5">
                 <div>
-                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:#CBD5E1;"><span>{{ g.label }}</span><span>{{ g.n }}</span></div>
-                  <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ g.pct }}%;height:100%;background:#178A5C;border-radius:6px;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--text-primary);"><span>{{ g.label }}</span><span>{{ g.n }}</span></div>
+                  <div style="height:8px;background:var(--bg-base);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ g.pct }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div>
                 </div>
               </sc-for>
             </div>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Cohort breakdown</div>
             <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px;">
               <sc-for list="{{ bioBars }}" as="g" hint-placeholder-count="5">
                 <div>
-                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:#CBD5E1;"><span>{{ g.label }}</span><span>{{ g.n }}</span></div>
-                  <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ g.pct }}%;height:100%;background:#1B4F8A;border-radius:6px;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--text-primary);"><span>{{ g.label }}</span><span>{{ g.n }}</span></div>
+                  <div style="height:8px;background:var(--bg-base);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ g.pct }}%;height:100%;background:var(--accent-blue);border-radius:6px;"></div></div>
                 </div>
               </sc-for>
             </div>
@@ -287,21 +401,21 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vQueue }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;gap:12px;">
           <sc-for list="{{ queue }}" as="q" hint-placeholder-count="5">
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px 20px;">
+            <div style="background:var(--bg-card);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px 20px;">
               <div style="display:flex;gap:14px;align-items:flex-start;">
-                <div style="width:38px;height:38px;border-radius:50%;background:rgba(61,201,138,0.16);color:#3DC98A;border:1px solid rgba(61,201,138,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;">{{ q.init }}</div>
+                <div style="width:38px;height:38px;border-radius:50%;background:var(--bg-base);color:var(--accent-navy);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0;">{{ q.init }}</div>
                 <div style="flex:1;min-width:0;">
                   <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
                     <div style="font-size:13.5px;font-weight:700;">{{ q.name }} <span style="font-weight:500;color:#64748B;">· {{ q.code }} · {{ q.host }}</span></div>
                     <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ q.bg }};color:{{ q.fg }};">{{ q.status }}</span>
                   </div>
-                  <div style="font-size:13px;color:#CBD5E1;margin-top:6px;line-height:1.55;">{{ q.date }} · {{ q.hours }} h — {{ q.desc }}</div>
+                  <div style="font-size:13px;color:var(--text-primary);margin-top:6px;line-height:1.55;">{{ q.date }} · {{ q.hours }} h — {{ q.desc }}</div>
                   <div style="font-size:11.5px;color:#64748B;margin-top:4px;">📎 {{ q.evidence }} · Mentor sign-off: {{ q.mentor }}</div>
                   <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap;">
-                      <div onClick="{{ q.approve }}" style="padding:8px 16px;border-radius:8px;background:#178A5C;color:#fff;font-weight:600;font-size:12.5px;cursor:pointer;" style-hover="background:#147A50;">✓ Approve &amp; sign off</div>
-                      <div onClick="{{ q.ret }}" style="padding:8px 16px;border-radius:8px;background:rgba(13,37,64,0.7);border:1px solid #F2C4CB;color:#FCA5A5;font-weight:600;font-size:12.5px;cursor:pointer;">↩ Return for correction</div>
-                      <input value="{{ q.comment }}" onChange="{{ q.setComment }}" placeholder="Comment (required when returning)…" style="flex:1;min-width:220px;border:1px solid rgba(61,201,138,0.25);border-radius:8px;padding:8px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;">
+                      <div onClick="{{ q.approve }}" style="padding:8px 16px;border-radius:8px;background:var(--accent-navy);color:#fff;font-weight:600;font-size:12.5px;cursor:pointer;" style-hover="background:var(--accent-navy-dark);">✓ Approve &amp; sign off</div>
+                      <div onClick="{{ q.ret }}" style="padding:8px 16px;border-radius:8px;background:var(--bg-base);border:1px solid #F2C4CB;color:#FCA5A5;font-weight:600;font-size:12.5px;cursor:pointer;">↩ Return for correction</div>
+                      <input value="{{ q.comment }}" onChange="{{ q.setComment }}" placeholder="Comment (required when returning)…" style="flex:1;min-width:220px;border:1px solid var(--border-color);border-radius:8px;padding:8px 12px;font-size:12.5px;font-family:'Public Sans',sans-serif;">
                     </div>
                   </sc-if>
                 </div>
@@ -311,26 +425,26 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vAcadSched }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Assessment &amp; moderation schedule · Q3 2026</div>
-          <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Date</div><div>Module · Assessment</div><div>Type</div><div>Assessor</div><div>Moderator</div><div>Status</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Assessment &amp; moderation schedule · Q3 2026</div>
+          <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Date</div><div>Module · Assessment</div><div>Type</div><div>Assessor</div><div>Moderator</div><div>Status</div></div>
           <sc-for list="{{ schedRows }}" as="r" hint-placeholder-count="6">
-            <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;align-items:center;">
+            <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:13px;align-items:center;">
               <div style="color:#94A3B8;font-size:12.5px;">{{ r.date }}</div><div style="font-weight:600;font-size:12.5px;">{{ r.title }}</div><div><span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ r.tBg }};color:{{ r.tFg }};">{{ r.type }}</span></div><div style="font-size:12.5px;color:#94A3B8;">{{ r.assessor }}</div><div style="font-size:12.5px;color:#94A3B8;">{{ r.moderator }}</div><div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.status }}</span></div>
             </div>
           </sc-for>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">Programmes &amp; students of concern</div>
             <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="3">
-              <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#B45309;flex-shrink:0;"></span><div style="flex:1;">{{ c.text }}</div></div>
+              <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#B45309;flex-shrink:0;"></span><div style="flex:1;">{{ c.text }}</div></div>
             </sc-for>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">SETA workplace agreements</div>
             <sc-for list="{{ wpaRows }}" as="w" hint-placeholder-count="3">
-              <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;"><div><b>{{ w.ref }}</b> · {{ w.host }}</div><div style="color:#64748B;">{{ w.n }} learners</div></div>
+              <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;"><div><b>{{ w.ref }}</b> · {{ w.host }}</div><div style="color:#64748B;">{{ w.n }} learners</div></div>
             </sc-for>
             <div style="font-size:12px;color:#3DC98A;font-weight:600;margin-top:10px;cursor:pointer;">Open learner logbook oversight →</div>
           </div>
@@ -338,89 +452,89 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       </sc-if>
       <sc-if value="{{ vAcadBuilder }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
               <div><div style="font-family:Archivo;font-weight:600;font-size:15px;">Occupational Certificate: Automotive Production Technician</div><div style="font-size:12px;color:#64748B;margin-top:3px;">SAQA 101234 · NQF 4 · 320 credits · structure aligned to QCTO curriculum</div></div>
-              <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:rgba(61,201,138,0.16);color:#3DC98A;color:#3DC98A;">Published</span>
+              <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg-base);color:#3DC98A;color:#3DC98A;">Published</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
               <sc-for list="{{ builderRows }}" as="m" hint-placeholder-count="8">
-                <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:rgba(8,25,45,0.85);border:1px solid rgba(61,201,138,0.25);border-radius:12px;border-radius:10px;">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;border-radius:10px;">
                   <span style="color:#B7C2CF;cursor:grab;font-size:14px;">⠿</span>
                   <span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ m.cBg }};color:{{ m.cFg }};">{{ m.comp }}</span>
                   <div style="flex:1;font-size:13px;font-weight:600;">{{ m.title }}</div>
                   <div style="font-size:12px;color:#64748B;">{{ m.cr }} cr</div>
                   <div style="font-size:11.5px;color:#64748B;">{{ m.items }}</div>
-                  <div style="font-size:12px;color:#3DC98A;font-weight:600;cursor:pointer;">Edit</div>
+                  <div style="font-size:12px;color:var(--accent-blue);font-weight:600;cursor:pointer;">Edit</div>
                 </div>
               </sc-for>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;">Upload course material</div>
-              <div style="border:2px dashed rgba(61,201,138,0.35);background:rgba(13,37,64,0.5);border-radius:12px;padding:22px;text-align:center;margin-top:12px;color:#64748B;font-size:12.5px;">Drop files here or browse<br><span style="font-size:11px;">PDF · DOCX · MP4 · SCORM (.zip)</span></div>
+              <div style="border:2px dashed var(--border-color);background:var(--bg-base);border-radius:12px;padding:22px;text-align:center;margin-top:12px;color:#64748B;font-size:12.5px;">Drop files here or browse<br><span style="font-size:11px;">PDF · DOCX · MP4 · SCORM (.zip)</span></div>
               <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;">
-                <span style="font-size:11px;font-weight:600;background:rgba(61,201,138,0.16);color:#3DC98A;border:1px solid rgba(61,201,138,0.3);border-radius:12px;padding:4px 10px;">Documents · 84</span>
+                <span style="font-size:11px;font-weight:600;background:var(--bg-base);color:var(--accent-navy);border:1px solid var(--border-color);border-radius:12px;padding:4px 10px;">Documents · 84</span>
                 <span style="font-size:11px;font-weight:600;background:rgba(14,116,144,0.2);color:#38BDF8;border-radius:12px;padding:4px 10px;">Video · 26</span>
-                <span style="font-size:11px;font-weight:600;background:rgba(61,201,138,0.16);color:#3DC98A;color:#3DC98A;border-radius:12px;padding:4px 10px;">SCORM · 9</span>
+                <span style="font-size:11px;font-weight:600;background:var(--bg-base);color:#3DC98A;color:#3DC98A;border-radius:12px;padding:4px 10px;">SCORM · 9</span>
               </div>
             </div>
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;">Add module</div>
-              <input value="{{ nbTitle }}" onChange="{{ setNbTitle }}" placeholder="Module title" style="width:100%;margin-top:12px;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
+              <input value="{{ nbTitle }}" onChange="{{ setNbTitle }}" placeholder="Module title" style="width:100%;margin-top:12px;border:1px solid var(--border-color);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
               <div style="display:flex;gap:8px;margin-top:10px;">
-                <select value="{{ nbComp }}" onChange="{{ setNbComp }}" style="flex:1;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);"><option>Knowledge</option><option>Practical</option><option>Work Experience</option></select>
-                <input value="{{ nbCr }}" onChange="{{ setNbCr }}" placeholder="Credits" style="width:80px;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
+                <select value="{{ nbComp }}" onChange="{{ setNbComp }}" style="flex:1;border:1px solid var(--border-color);border-radius:9px;padding:10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);"><option>Knowledge</option><option>Practical</option><option>Work Experience</option></select>
+                <input value="{{ nbCr }}" onChange="{{ setNbCr }}" placeholder="Credits" style="width:80px;border:1px solid var(--border-color);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
               </div>
-              <div onClick="{{ nbAdd }}" style="margin-top:12px;padding:10px 0;border-radius:9px;text-align:center;font-weight:600;font-size:13px;cursor:pointer;background:#178A5C;color:#FFFFFF;">＋ Add to structure</div>
+              <div onClick="{{ nbAdd }}" style="margin-top:12px;padding:10px 0;border-radius:9px;text-align:center;font-weight:600;font-size:13px;cursor:pointer;background:var(--accent-navy);color:#FFFFFF;">＋ Add to structure</div>
             </div>
           </div>
         </div>
       </sc-if>
       <sc-if value="{{ vAcadAuthor }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-            <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+            <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;">Question bank · KM-03 OHS ({{ qbankCount }} items)</div>
-              <div onClick="{{ addQ }}" style="font-size:12px;font-weight:600;color:#fff;background:#0B2C4D;padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New question</div>
+              <div onClick="{{ addQ }}" style="font-size:12px;font-weight:600;color:#fff;background:var(--accent-navy);padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New question</div>
             </div>
             <sc-for list="{{ qbank }}" as="q" hint-placeholder-count="5">
-              <div style="display:flex;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.08);">
-                <span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:rgba(61,201,138,0.16);color:#3DC98A;border:1px solid rgba(61,201,138,0.3);flex-shrink:0;">{{ q.type }}</span>
+              <div style="display:flex;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--border-color);">
+                <span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:var(--bg-base);color:var(--accent-navy);border:1px solid var(--border-color);flex-shrink:0;">{{ q.type }}</span>
                 <div style="flex:1;font-size:13px;">{{ q.text }}</div>
                 <div style="font-size:11.5px;color:#64748B;white-space:nowrap;">{{ q.marks }} marks</div>
               </div>
             </sc-for>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Assessment settings · OHS Module Quiz</div>
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;"><span>Time limit</span><b>15 minutes</b></div>
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;"><span>Attempt limit</span><b>3 attempts</b></div>
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;"><span>Pass mark</span><b>65%</b></div>
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;"><span>Randomise question order</span>
-                <div onClick="{{ toggleRand }}" style="width:40px;height:22px;border-radius:12px;background:{{ randBg }};position:relative;cursor:pointer;transition:background .15s;"><div style="position:absolute;top:2px;left:{{ randLeft }};width:18px;height:18px;border-radius:50%;background:rgba(13,37,64,0.7);transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.25);"></div></div>
+                <div onClick="{{ toggleRand }}" style="width:40px;height:22px;border-radius:12px;background:{{ randBg }};position:relative;cursor:pointer;transition:background .15s;"><div style="position:absolute;top:2px;left:{{ randLeft }};width:18px;height:18px;border-radius:50%;background:var(--bg-base);transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.25);"></div></div>
               </div>
               <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;display:flex;justify-content:space-between;align-items:center;font-size:13px;gap:10px;">
                 <div><b>Safe Exam Browser proctoring</b><div style="font-size:11.5px;color:#64748B;margin-top:2px;">Lockdown: no tabs, copy/paste or capture</div></div>
-                <div onClick="{{ toggleSeb }}" style="width:40px;height:22px;border-radius:12px;background:{{ sebBg }};position:relative;cursor:pointer;transition:background .15s;flex-shrink:0;"><div style="position:absolute;top:2px;left:{{ sebLeft }};width:18px;height:18px;border-radius:50%;background:rgba(13,37,64,0.7);transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.25);"></div></div>
+                <div onClick="{{ toggleSeb }}" style="width:40px;height:22px;border-radius:12px;background:{{ sebBg }};position:relative;cursor:pointer;transition:background .15s;flex-shrink:0;"><div style="position:absolute;top:2px;left:{{ sebLeft }};width:18px;height:18px;border-radius:50%;background:var(--bg-base);transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.25);"></div></div>
               </div>
               <div style="background:{{ sebNoteBg }};border-radius:9px;padding:10px 12px;font-size:11.5px;color:{{ sebNoteFg }};font-weight:600;">{{ sebNote }}</div>
-              <div style="padding:10px 0;border-radius:9px;text-align:center;font-weight:600;font-size:13px;cursor:pointer;background:#178A5C;color:#fff;">Save assessment</div>
+              <div style="padding:10px 0;border-radius:9px;text-align:center;font-weight:600;font-size:13px;cursor:pointer;background:var(--accent-navy);color:#fff;">Save assessment</div>
             </div>
           </div>
         </div>
       </sc-if>
       <sc-if value="{{ vAcadVle }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">Real-time assessment tracking</div>
             <sc-for list="{{ liveRows }}" as="l" hint-placeholder-count="4">
-              <div style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="padding:10px 0;border-bottom:1px solid var(--border-color);">
                 <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;"><span>{{ l.title }}</span><span style="color:{{ l.c }};">{{ l.state }}</span></div>
                 <div style="display:flex;align-items:center;gap:10px;margin-top:6px;">
-                  <div style="flex:1;height:7px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;"><div style="width:{{ l.pct }}%;height:100%;background:{{ l.c }};border-radius:6px;"></div></div>
+                  <div style="flex:1;height:7px;background:var(--bg-base);border-radius:6px;overflow:hidden;"><div style="width:{{ l.pct }}%;height:100%;background:{{ l.c }};border-radius:6px;"></div></div>
                   <span style="font-size:11.5px;color:#64748B;white-space:nowrap;">{{ l.sub }}</span>
                 </div>
               </div>
@@ -428,27 +542,27 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
             <div style="font-size:12px;color:#3DC98A;font-weight:600;margin-top:12px;cursor:pointer;">⬇ Verification report →</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:16px;">
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">Blended &amp; online programmes</div>
               <sc-for list="{{ vleProgs }}" as="p" hint-placeholder-count="4">
-                <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;"><div style="font-weight:600;">{{ p.title }}</div><div style="display:flex;gap:8px;align-items:center;"><span style="color:#64748B;">{{ p.n }} learners</span><span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ p.bg }};color:{{ p.fg }};">{{ p.mode }}</span></div></div>
+                <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;"><div style="font-weight:600;">{{ p.title }}</div><div style="display:flex;gap:8px;align-items:center;"><span style="color:#64748B;">{{ p.n }} learners</span><span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ p.bg }};color:{{ p.fg }};">{{ p.mode }}</span></div></div>
               </sc-for>
             </div>
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">Incident reports</div>
               <sc-for list="{{ incidents }}" as="i" hint-placeholder-count="2">
-                <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:flex-start;"><span style="width:8px;height:8px;border-radius:50%;background:#9F1239;flex-shrink:0;margin-top:4px;"></span><div style="flex:1;">{{ i.text }}<div style="font-size:11px;color:#64748B;margin-top:2px;">{{ i.when }}</div></div></div>
+                <div style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:flex-start;"><span style="width:8px;height:8px;border-radius:50%;background:#9F1239;flex-shrink:0;margin-top:4px;"></span><div style="flex:1;">{{ i.text }}<div style="font-size:11px;color:#64748B;margin-top:2px;">{{ i.when }}</div></div></div>
               </sc-for>
             </div>
           </div>
         </div>
       </sc-if>
       <sc-if value="{{ vAcadCentres }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Accredited assessment centres · EISA schedule</div>
-          <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Centre</div><div>Qualification</div><div>EISA date</div><div>Learners · Pract.</div><div>Invigilator / Moderator</div><div>Status</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Accredited assessment centres · EISA schedule</div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Centre</div><div>Qualification</div><div>EISA date</div><div>Learners · Pract.</div><div>Invigilator / Moderator</div><div>Status</div></div>
           <sc-for list="{{ centreRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.centre }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
               <div style="color:#94A3B8;">{{ r.qual }}</div><div style="font-weight:600;">{{ r.date }}</div><div style="color:#94A3B8;">{{ r.n }} · {{ r.pr }}</div><div style="color:#94A3B8;">{{ r.staff }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.status }}</span></div>
@@ -459,29 +573,29 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       </sc-if>
       <sc-if value="{{ vCert }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Issued this quarter</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">96</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Q3 2026 · 3 programmes</div></div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Next serial number</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:11px;color:#FFFFFF;font-variant-numeric:tabular-nums;">TTA-2026-01238</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Auto-generated · tamper-evident register</div></div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#B45309;">5</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Issued this quarter</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">96</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Q3 2026 · 3 programmes</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Next serial number</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:11px;color:#FFFFFF;font-variant-numeric:tabular-nums;">TTA-2026-01238</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Auto-generated · tamper-evident register</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#B45309;">5</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Certification batches</div>
-            <div style="font-size:12px;font-weight:600;color:#fff;background:#0B2C4D;padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New batch run</div>
+            <div style="font-size:12px;font-weight:600;color:#fff;background:var(--accent-navy);padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New batch run</div>
           </div>
-          <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Programme</div><div>Learners</div><div>Serial range</div><div>Issue date</div><div>Status</div><div>Actions</div></div>
+          <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>Learners</div><div>Serial range</div><div>Issue date</div><div>Status</div><div>Actions</div></div>
           <sc-for list="{{ certRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.prog }}</div><div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;font-size:12px;">{{ r.range }}</div><div style="color:#94A3B8;">{{ r.date }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.status }}</span></div>
               <div style="display:flex;gap:10px;font-size:12px;font-weight:600;color:#3DC98A;"><span style="cursor:pointer;">Download</span><span style="cursor:pointer;">Reprint</span></div>
             </div>
           </sc-for>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">NAMB trade test numbers · artisan learners</div>
-          <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Learner</div><div>Trade</div><div>NAMB trade test no.</div><div>Status</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">NAMB trade test numbers · artisan learners</div>
+          <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Learner</div><div>Trade</div><div>NAMB trade test no.</div><div>Status</div></div>
           <sc-for list="{{ nambRows }}" as="r" hint-placeholder-count="3">
-            <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div><div style="color:#94A3B8;">{{ r.trade }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.no }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.status }}</span></div>
             </div>
@@ -490,49 +604,49 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       </sc-if>
       <sc-if value="{{ vPartSponsors }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-            <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Sponsor &amp; funder register</div>
-            <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Sponsor</div><div>Learners</div><div>Grants received</div><div>Intervention cost</div><div>Outstanding</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+            <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Sponsor &amp; funder register</div>
+            <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Sponsor</div><div>Learners</div><div>Grants received</div><div>Intervention cost</div><div>Outstanding</div></div>
             <sc-for list="{{ sponsorRows }}" as="r" hint-placeholder-count="5">
-              <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+              <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
                 <div style="font-weight:600;">{{ r.name }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
                 <div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#3DC98A;font-weight:600;">{{ r.grants }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.cost }}</div><div style="font-variant-numeric:tabular-nums;color:#B45309;font-weight:600;">{{ r.out }}</div>
               </div>
             </sc-for>
-            <div style="padding:13px 20px;font-size:12px;color:#3DC98A;font-weight:600;cursor:pointer;">⬇ Quarterly sponsor report · ⬇ Annual financial statement</div>
+            <div style="padding:13px 20px;font-size:12px;color:var(--accent-blue);font-weight:600;cursor:pointer;">⬇ Quarterly sponsor report · ⬇ Annual financial statement</div>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Sponsor locations</div>
-            <div style="margin-top:12px;background:rgba(8,25,45,0.9);border:1px solid rgba(61,201,138,0.2);border-radius:12px;height:190px;position:relative;overflow:hidden;">
-              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:24px 24px;"></div>
+            <div style="margin-top:12px;background:var(--bg-base);border:1px solid var(--border-color);border-radius:12px;height:190px;position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:var(--bg-base);"></div>
               <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
-                <div title="{{ p.name }}" style="position:absolute;left:{{ p.x }}%;top:{{ p.y }}%;width:12px;height:12px;border-radius:50%;background:#178A5C;border:2px solid #fff;box-shadow:0 0 10px rgba(23,138,92,.6);cursor:pointer;"></div>
+                <div title="{{ p.name }}" style="position:absolute;left:{{ p.x }}%;top:{{ p.y }}%;width:12px;height:12px;border-radius:50%;background:var(--accent-navy);border:2px solid #fff;box-shadow:0 0 10px var(--accent-navy);cursor:pointer;"></div>
               </sc-for>
               <div style="position:absolute;bottom:8px;left:12px;font-size:10.5px;color:#64748B;font-weight:600;">Gauteng · Tshwane metro (illustrative)</div>
             </div>
             <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
-              <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.08);"><span style="font-weight:600;">{{ p.name }}</span><span style="color:#64748B;">{{ p.loc }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--border-color);"><span style="font-weight:600;">{{ p.name }}</span><span style="color:#64748B;">{{ p.loc }}</span></div>
             </sc-for>
           </div>
         </div>
       </sc-if>
       <sc-if value="{{ vPartProgs }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Learning programme catalogue</div>
-          <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Programme</div><div>NQF</div><div>Last uptake</div><div>Teach-out</div><div>Learners</div><div>ISA pass rate</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Learning programme catalogue</div>
+          <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>NQF</div><div>Last uptake</div><div>Teach-out</div><div>Learners</div><div>ISA pass rate</div></div>
           <sc-for list="{{ progRows }}" as="r" hint-placeholder-count="5">
-            <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}</div><div style="color:#94A3B8;">{{ r.nqf }}</div><div style="color:#94A3B8;">{{ r.uptake }}</div><div style="color:#94A3B8;">{{ r.teachout }}</div><div>{{ r.n }}</div>
-              <div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;"><div style="width:{{ r.pass }}%;height:100%;background:#178A5C;border-radius:6px;"></div></div><span style="font-size:11.5px;font-weight:600;">{{ r.pass }}%</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;background:var(--bg-base);border-radius:6px;overflow:hidden;"><div style="width:{{ r.pass }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div><span style="font-size:11.5px;font-weight:600;">{{ r.pass }}%</span></div>
             </div>
           </sc-for>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
           <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">Document library</div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
-              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:rgba(13,37,64,0.65);color:#FFFFFF;border-radius:10px;">
-                <div style="width:30px;height:30px;border-radius:8px;background:rgba(61,201,138,0.16);color:#3DC98A;border:1px solid rgba(61,201,138,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:#FFFFFF;border-radius:10px;">
+                <div style="width:30px;height:30px;border-radius:8px;background:var(--bg-base);color:var(--accent-navy);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
                 <div style="flex:1;min-width:0;"><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ d.title }}</div><div style="font-size:11px;color:#64748B;">{{ d.meta }}</div></div>
               </div>
             </sc-for>
@@ -540,11 +654,11 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vPartHosts }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Host employer register</div>
-          <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Company</div><div>SETA approval</div><div>Learners</div><div>Sup. / Mentors</div><div>SDF contact</div><div>Logbooks</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Host employer register</div>
+          <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Company</div><div>SETA approval</div><div>Learners</div><div>Sup. / Mentors</div><div>SDF contact</div><div>Logbooks</div></div>
           <sc-for list="{{ hostRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.approval }}</span></div>
               <div>{{ r.n }} placed</div><div style="color:#94A3B8;">{{ r.staff }}</div><div style="color:#94A3B8;">{{ r.sdf }}</div>
@@ -554,11 +668,11 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vPartProviders }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Training provider register</div>
-          <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Provider</div><div>Accreditation</div><div>Practitioners</div><div>Compliance</div><div>Payments YTD</div><div>Impl. plan 26/27</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Training provider register</div>
+          <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Provider</div><div>Accreditation</div><div>Practitioners</div><div>Compliance</div><div>Payments YTD</div><div>Impl. plan 26/27</div></div>
           <sc-for list="{{ providerRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div><div style="color:#94A3B8;font-size:12px;">{{ r.accr }}</div><div>{{ r.pr }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.comp }}</span></div>
               <div style="font-variant-numeric:tabular-nums;">{{ r.pay }}</div><div style="color:#94A3B8;">{{ r.plan }}</div>
@@ -569,7 +683,7 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vCompAccr }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
           <sc-for list="{{ accrCards }}" as="a" hint-placeholder-count="3">
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;">
               <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#64748B;text-transform:uppercase;">{{ a.kind }}</span><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ a.bg }};color:{{ a.fg }};">{{ a.status }}</span></div>
               <div style="font-weight:700;font-size:14px;margin-top:9px;">{{ a.title }}</div>
               <div style="font-size:12px;color:#94A3B8;margin-top:6px;line-height:1.7;">{{ a.ref }}<br>Accredited {{ a.start }} — {{ a.end }}</div>
@@ -577,32 +691,32 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
           </sc-for>
         </div>
         <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Training plan vs implementation · 2026/27</div>
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
               <sc-for list="{{ planBars }}" as="b" hint-placeholder-count="4">
                 <div>
-                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:#CBD5E1;"><span>{{ b.label }}</span><span>{{ b.act }} of {{ b.plan }} planned</span></div>
-                  <div style="height:8px;background:rgba(255,255,255,0.08);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ b.pct }}%;height:100%;background:linear-gradient(90deg,#1B4F8A,#178A5C);border-radius:6px;"></div></div>
+                  <div style="display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;color:var(--text-primary);"><span>{{ b.label }}</span><span>{{ b.act }} of {{ b.plan }} planned</span></div>
+                  <div style="height:8px;background:var(--bg-base);border-radius:6px;margin-top:5px;overflow:hidden;"><div style="width:{{ b.pct }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div>
                 </div>
               </sc-for>
             </div>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:10px;">CAT &amp; RPL records</div>
             <sc-for list="{{ catRows }}" as="c" hint-placeholder-count="3">
-              <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;"><div><b>{{ c.name }}</b> · {{ c.type }}</div><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};">{{ c.status }}</span></div>
+              <div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;"><div><b>{{ c.name }}</b> · {{ c.type }}</div><span style="font-size:11px;font-weight:600;padding:3px 9px;border-radius:12px;background:{{ c.bg }};color:{{ c.fg }};">{{ c.status }}</span></div>
             </sc-for>
             <div style="font-size:12px;color:#3DC98A;font-weight:600;margin-top:12px;cursor:pointer;">⬇ Report to management &amp; QCTO (Q3)</div>
           </div>
         </div>
       </sc-if>
       <sc-if value="{{ vCompSites }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Approved training &amp; assessment sites</div>
-          <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Site</div><div>Approved for</div><div>OHS status</div><div>Last OHS audit</div><div>Next audit due</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Approved training &amp; assessment sites</div>
+          <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Site</div><div>Approved for</div><div>OHS status</div><div>Last OHS audit</div><div>Next audit due</div></div>
           <sc-for list="{{ siteRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.site }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
               <div style="color:#94A3B8;">{{ r.use }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.ohs }}</span></div>
@@ -612,12 +726,12 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vCompQms }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
           <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">QMS policies &amp; templates</div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             <sc-for list="{{ qmsDocs }}" as="d" hint-placeholder-count="6">
-              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:rgba(13,37,64,0.65);color:#FFFFFF;border-radius:10px;">
-                <div style="width:30px;height:30px;border-radius:8px;background:rgba(61,201,138,0.16);color:#3DC98A;color:#3DC98A;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:#FFFFFF;border-radius:10px;">
+                <div style="width:30px;height:30px;border-radius:8px;background:var(--bg-base);color:#3DC98A;color:#3DC98A;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
                 <div style="flex:1;min-width:0;"><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ d.title }}</div><div style="font-size:11px;color:#64748B;">{{ d.meta }}</div></div>
               </div>
             </sc-for>
@@ -625,11 +739,11 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vPeopleStaff }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Facilitators, assessors &amp; internal moderators</div>
-          <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Name</div><div>Role</div><div>Qualifications · Modules</div><div>Contract</div><div>Registration no.</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Facilitators, assessors &amp; internal moderators</div>
+          <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Name</div><div>Role</div><div>Qualifications · Modules</div><div>Contract</div><div>Registration no.</div></div>
           <sc-for list="{{ staffRows }}" as="r" hint-placeholder-count="6">
-            <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div>
               <div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.rBg }};color:{{ r.rFg }};">{{ r.role }}</span></div>
               <div style="color:#94A3B8;font-size:12px;">{{ r.scope }}</div><div style="color:#94A3B8;">{{ r.contract }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;font-size:12px;">{{ r.reg }}</div>
@@ -641,24 +755,24 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
       <sc-if value="{{ vPeopleUsers }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:16px;align-items:start;">
           <div style="display:flex;flex-direction:column;gap:16px;">
-            <div style="background:linear-gradient(120deg,#081F38,#123E6B);border-radius:16px;padding:20px 22px;color:#fff;box-shadow:0 20px 40px -28px rgba(8,31,56,.7);">
+            <div style="background:var(--accent-navy);border-radius:16px;padding:20px 22px;color:#FFFFFF;box-shadow: none;">
               <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);">Licence utilisation</div>
               <div style="font-family:Archivo;font-weight:700;font-size:26px;margin-top:8px;">{{ licUsed }} <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,.5);">/ 500</span></div>
-              <div style="height:8px;background:rgba(255,255,255,.12);border-radius:6px;margin-top:12px;overflow:hidden;"><div style="width:{{ licPct }}%;height:100%;background:linear-gradient(90deg,#178A5C,#3DC98A);border-radius:6px;box-shadow:0 0 12px rgba(61,201,138,.55);"></div></div>
+              <div style="height:8px;background:rgba(255,255,255,.12);border-radius:6px;margin-top:12px;overflow:hidden;"><div style="width:{{ licPct }}%;height:100%;background:var(--accent-navy);border-radius:6px;"></div></div>
               <div style="font-size:11.5px;color:rgba(255,255,255,.55);margin-top:8px;">{{ licFree }} named user licences available</div>
             </div>
-            <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:20px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="font-family:Archivo;font-weight:600;font-size:15px;">Provision new user</div>
-              <input value="{{ nuName }}" onChange="{{ setNuName }}" placeholder="Full name" style="width:100%;margin-top:12px;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
-              <select value="{{ nuRole }}" onChange="{{ setNuRole }}" style="width:100%;margin-top:10px;border:1px solid rgba(61,201,138,0.25);border-radius:9px;padding:10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:rgba(13,37,64,0.7);"><option>Student</option><option>Facilitator</option><option>Assessor</option><option>Moderator</option><option>Mentor</option><option>Supervisor</option><option>Administrator</option></select>
+              <input value="{{ nuName }}" onChange="{{ setNuName }}" placeholder="Full name" style="width:100%;margin-top:12px;border:1px solid var(--border-color);border-radius:9px;padding:10px 12px;font-size:13px;font-family:'Public Sans',sans-serif;">
+              <select value="{{ nuRole }}" onChange="{{ setNuRole }}" style="width:100%;margin-top:10px;border:1px solid var(--border-color);border-radius:9px;padding:10px;font-size:12.5px;font-family:'Public Sans',sans-serif;background:var(--bg-base);"><option>Student</option><option>Facilitator</option><option>Assessor</option><option>Moderator</option><option>Mentor</option><option>Supervisor</option><option>Administrator</option></select>
               <div onClick="{{ nuAdd }}" style="margin-top:12px;padding:10px 0;border-radius:9px;text-align:center;font-weight:600;font-size:13px;cursor:pointer;background:{{ nuBg }};color:{{ nuFg }};">{{ nuText }}</div>
             </div>
           </div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-            <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Role-based provisioning</div>
-            <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Role</div><div>Users</div><div>Access rights</div><div>Type</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+            <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Role-based provisioning</div>
+            <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Role</div><div>Users</div><div>Access rights</div><div>Type</div></div>
             <sc-for list="{{ roleRows }}" as="r" hint-placeholder-count="7">
-              <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+              <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
                 <div style="font-weight:600;">{{ r.role }}</div><div style="font-variant-numeric:tabular-nums;">{{ r.n }}</div><div style="color:#94A3B8;font-size:12px;">{{ r.rights }}</div><div style="color:#94A3B8;">{{ r.type }}</div>
               </div>
             </sc-for>
@@ -666,32 +780,32 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
         </div>
       </sc-if>
       <sc-if value="{{ vNonEvents }}" hint-placeholder-val="{{ false }}">
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Seminars, workshops &amp; masterclasses · Q3–Q4 2026</div>
-            <div style="font-size:12px;font-weight:600;color:#fff;background:#0B2C4D;padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New event</div>
+            <div style="font-size:12px;font-weight:600;color:#fff;background:var(--accent-navy);padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New event</div>
           </div>
-          <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Event</div><div>Date</div><div>Speaker</div><div>Fee</div><div>Registered</div><div>Capacity</div></div>
+          <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Date</div><div>Speaker</div><div>Fee</div><div>Registered</div><div>Capacity</div></div>
           <sc-for list="{{ eventRows }}" as="r" hint-placeholder-count="5">
-            <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.kind }}</div></div>
               <div style="color:#94A3B8;">{{ r.date }}</div><div style="color:#94A3B8;">{{ r.speaker }}</div><div style="font-variant-numeric:tabular-nums;">{{ r.fee }}</div><div>{{ r.reg }}</div>
-              <div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;"><div style="width:{{ r.pct }}%;height:100%;background:#1B4F8A;border-radius:6px;"></div></div><span style="font-size:11.5px;color:#64748B;">{{ r.cap }}</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><div style="flex:1;height:6px;background:var(--bg-base);border-radius:6px;overflow:hidden;"><div style="width:{{ r.pct }}%;height:100%;background:var(--accent-blue);border-radius:6px;"></div></div><span style="font-size:11.5px;color:#64748B;">{{ r.cap }}</span></div>
             </div>
           </sc-for>
         </div>
       </sc-if>
       <sc-if value="{{ vNonFin }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Revenue Q3 2026</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#3DC98A;">R 412,300</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Across 6 events · 318 paid attendees</div></div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Direct costs</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">R 168,450</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Speakers, catering, venues</div></div>
-          <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Net contribution</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#3DC98A;">R 243,850</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">59% margin · vs R 187k in Q2</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Revenue Q3 2026</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#3DC98A;">R 412,300</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Across 6 events · 318 paid attendees</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Direct costs</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">R 168,450</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Speakers, catering, venues</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Net contribution</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#3DC98A;">R 243,850</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">59% margin · vs R 187k in Q2</div></div>
         </div>
-        <div style="background:linear-gradient(180deg,rgba(13,37,64,.8),rgba(8,25,45,.9));backdrop-filter:blur(12px);border:1px solid rgba(61,201,138,.18);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.36);color:#FFFFFF;overflow:hidden;">
-          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.08);">Event financials</div>
-          <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:11px 20px;background:rgba(13,37,64,0.65);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid rgba(255,255,255,0.08);"><div>Event</div><div>Attendees</div><div>Revenue</div><div>Costs</div><div>Net</div></div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
+          <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Event financials</div>
+          <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Attendees</div><div>Revenue</div><div>Costs</div><div>Net</div></div>
           <sc-for list="{{ evFinRows }}" as="r" hint-placeholder-count="4">
-            <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12.5px;align-items:center;">
+            <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}</div><div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#3DC98A;font-weight:600;">{{ r.rev }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.cost }}</div><div style="font-variant-numeric:tabular-nums;font-weight:700;">{{ r.net }}</div>
             </div>
           </sc-for>
@@ -741,7 +855,7 @@ class Component extends DCLogic {
   S(){ return {
       goDash:()=>this.go('dashboard'), goPipeline:()=>this.go('pipeline'), goReg:()=>this.go('reg'), goRisk:()=>this.go('risk'), goStats:()=>this.go('stats'), goQueue:()=>this.go('queue'),
       goSched:()=>this.go('sched'), goBuilder:()=>this.go('builder'), goAuthor:()=>this.go('author'), goVle:()=>this.go('vle'), goCentres:()=>this.go('centres'), goCert:()=>this.go('cert'),
-      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),ok:{bg:'#E7F5EE',fg:'#147A50'}, warn:{bg:'#FEF3C7',fg:'#92400E'}, bad:{bg:'#FDECEC',fg:'#9F1239'}, info:{bg:'#E8F0FB',fg:'#1B4F8A'}, gray:{bg:'#EEF1F5',fg:'#5B6B7C'}}; }
+      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),ok:{bg:'#E7F5EE',fg:'var(--accent-navy-dark)'}, warn:{bg:'#FEF3C7',fg:'#92400E'}, bad:{bg:'#FDECEC',fg:'#9F1239'}, info:{bg:'#E8F0FB',fg:'var(--accent-blue)'}, gray:{bg:'#EEF1F5',fg:'#5B6B7C'}}; }
   v1(){
     const st = this.state, S = this.S();
     const [secTitle, secDesc] = this.getSecTitles(st.sec);
@@ -771,10 +885,10 @@ class Component extends DCLogic {
       vNonEvents: st.sec === 'events',
       vNonFin: st.sec === 'nonfin',
       kpis: [
-        {label:'Active learners',value:'386',delta:'+42 YoY',dBg:'rgba(61,201,138,0.16)',dFg:'#3DC98A',sub:'Across 6 accredited programmes',c:'#178A5C'},
-        {label:'Completion rate',value:'87%',delta:'+3%',dBg:'rgba(61,201,138,0.16)',dFg:'#3DC98A',sub:'Rolling 12 months, all cohorts',c:'#1B4F8A'},
-        {label:'Certificates issued',value:'96',delta:'Q3 2026',dBg:'rgba(56,189,248,0.16)',dFg:'#38BDF8',sub:'Next serial TTA-2026-01238',c:'#0E7490'},
-        {label:'At-risk learners',value:'7',delta:'Action needed',dBg:'rgba(239,68,68,0.16)',dFg:'#FCA5A5',sub:'Flagged per QMS TTA-QMS-014',c:'#9F1239'}
+        {label:'Active learners',value:'386',delta:'+42 YoY',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Across 6 accredited programmes',c:'var(--accent-navy)'},
+        {label:'Completion rate',value:'87%',delta:'+3%',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Rolling 12 months, all cohorts',c:'var(--accent-navy)'},
+        {label:'Certificates issued',value:'96',delta:'Q3 2026',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Next serial TTA-2026-01238',c:'var(--accent-navy)'},
+        {label:'At-risk learners',value:'7',delta:'Action needed',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Flagged per QMS TTA-QMS-014',c:'var(--accent-navy)'}
       ],
       progBarsDash: [
         {label:'Automotive Production Technician · NQF 4',n:148,pct:100},
@@ -785,16 +899,16 @@ class Component extends DCLogic {
       ],
       licUsed: 412 + st.licAdded, licPct: Math.round(((412 + st.licAdded)/500)*100), licFree: 500 - (412 + st.licAdded),
       repText: st.repDone ? '✓ Report generated — downloaded' : 'Generate report',
-      repBg: st.repDone ? 'rgba(61,201,138,0.16)' : '#178A5C',
-      repFg: st.repDone ? '#3DC98A' : '#FFFFFF',
+      repBg: st.repDone ? 'var(--bg-base)' : 'var(--accent-navy)',
+      repFg: st.repDone ? 'var(--accent-navy)' : '#FFFFFF',
       genReport: () => this.setState({repDone: true}),
       repType: st.repType, setRepType: e => this.setState({repType: e.target.value}),
       repPeriod: st.repPeriod, setRepPeriod: e => this.setState({repPeriod: e.target.value}),
       activity: [
-        {text:'T. Mahlangu signed off logbook entry WM-01/e2 for Lerato Mokoena (awaiting supervisor).',when:'Today 09:41',c:'#178A5C'},
-        {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'#1B4F8A'},
+        {text:'T. Mahlangu signed off logbook entry WM-01/e2 for Lerato Mokoena (awaiting supervisor).',when:'Today 09:41',c:'var(--accent-navy)'},
+        {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'var(--accent-blue)'},
         {text:'Incident report: SEB session terminated early — KM-06 exam, learner S. Mahlatsi (under review).',when:'Yesterday 16:02',c:'#9F1239'},
-        {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'#178A5C'},
+        {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'var(--accent-navy)'},
         {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'#B45309'}
       ]
     };
@@ -812,18 +926,18 @@ class Component extends DCLogic {
     const st = this.state, S = this.S();
     const pipeline = [
       {stage:'Applied', count:84, cards:[
-        {name:'Katlego Sithole',meta:'Mamelodi · Matric + N2 · applied 12 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'#1B4F8A'}},
+        {name:'Katlego Sithole',meta:'Mamelodi · Matric + N2 · applied 12 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}},
         {name:'Annelie du Plessis',meta:'Eersterust · Matric · applied 11 Aug',tag:'Docs outstanding',...{tBg:'#FEF3C7',tFg:'#92400E'}},
-        {name:'Bongani Zwane',meta:'Soshanguve · N3 Mech · applied 09 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'#1B4F8A'}}]},
+        {name:'Bongani Zwane',meta:'Soshanguve · N3 Mech · applied 09 Aug',tag:'APT test booked',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}}]},
       {stage:'Shortlisted', count:31, cards:[
         {name:'Precious Maluleke',meta:'Atteridgeville · APT 74% · Automotive Prod. Tech',tag:'Interview 22 Aug',...{tBg:'#ECFAFD',tFg:'#0E7490'}},
         {name:'Daniel Venter',meta:'Silverton · APT 68% · Mechatronics',tag:'Interview 22 Aug',...{tBg:'#ECFAFD',tFg:'#0E7490'}}]},
       {stage:'Selected', count:18, cards:[
         {name:'Refilwe Mabena',meta:'Hammanskraal · merSETA DG funded',tag:'Medical pending',...{tBg:'#FEF3C7',tFg:'#92400E'}},
-        {name:'Sizwe Ngobeni',meta:'Mabopane · Ford Supplier Park intake',tag:'Contract sent',...{tBg:'#E8F0FB',tFg:'#1B4F8A'}}]},
+        {name:'Sizwe Ngobeni',meta:'Mabopane · Ford Supplier Park intake',tag:'Contract sent',...{tBg:'#E8F0FB',tFg:'var(--accent-blue)'}}]},
       {stage:'Registered', count:12, cards:[
-        {name:'Thandi Baloyi',meta:'Ga-Rankuwa · TASEZ-2026-0411 issued',tag:'✓ Enrolled',...{tBg:'#E7F5EE',tFg:'#147A50'}},
-        {name:'Pieter Botha',meta:'Pretoria North · TASEZ-2026-0412 issued',tag:'✓ Enrolled',...{tBg:'#E7F5EE',tFg:'#147A50'}}]}
+        {name:'Thandi Baloyi',meta:'Ga-Rankuwa · TASEZ-2026-0411 issued',tag:'✓ Enrolled',...{tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)'}},
+        {name:'Pieter Botha',meta:'Pretoria North · TASEZ-2026-0412 issued',tag:'✓ Enrolled',...{tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)'}}]}
     ];
     const regAll = [
       {name:'Lerato Mokoena',loc:'Mamelodi East',said:'9908120456087',qual:'Automotive Production Technician',project:'merSETA DG 2025/26',sponsor:'merSETA',cost:'R 94,500',status:'Active',...S.ok},
@@ -897,17 +1011,17 @@ class Component extends DCLogic {
       {comp:'WM',title:'Production Line Work Experience',cr:48,items:'480 h · logbook'},
       {comp:'WM',title:'Quality Department Rotation',cr:24,items:'240 h · logbook'}
     ];
-    const compSty = {KM:{cBg:'#E8F0FB',cFg:'#1B4F8A'},PM:{cBg:'#E7F5EE',cFg:'#147A50'},WM:{cBg:'#EEF1F5',cFg:'#0B2C4D'}};
+    const compSty = {KM:{cBg:'#E8F0FB',cFg:'var(--accent-blue)'},PM:{cBg:'#E7F5EE',cFg:'var(--accent-navy-dark)'},WM:{cBg:'#EEF1F5',cFg:'var(--accent-navy)'}};
     const builderRows = [...builderBase, ...st.builderExtra].map(m=>({...m, ...compSty[m.comp]}));
     return {
       goDash:()=>this.go('dashboard'), goPipeline:()=>this.go('pipeline'), goReg:()=>this.go('reg'), goRisk:()=>this.go('risk'), goStats:()=>this.go('stats'), goQueue:()=>this.go('queue'),
       goSched:()=>this.go('sched'), goBuilder:()=>this.go('builder'), goAuthor:()=>this.go('author'), goVle:()=>this.go('vle'), goCentres:()=>this.go('centres'), goCert:()=>this.go('cert'),
       goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),
       schedRows:[
-        {date:'26 Aug',title:'KM-03 OHS Module Quiz · online window',type:'Formative',tBg:'#E8F0FB',tFg:'#1B4F8A',assessor:'R. Botha',moderator:'—',status:'Scheduled',...S.info},
+        {date:'26 Aug',title:'KM-03 OHS Module Quiz · online window',type:'Formative',tBg:'#E8F0FB',tFg:'var(--accent-blue)',assessor:'R. Botha',moderator:'—',status:'Scheduled',...S.info},
         {date:'27 Aug',title:'PM-01 Engine Assembly · moderation review',type:'Moderation',tBg:'#FDF0F3',tFg:'#9F1239',assessor:'S. van der Merwe',moderator:'G. Nkuna',status:'Scheduled',...S.info},
-        {date:'03 Sep',title:'PM-02 Quality Inspection · final observation',type:'Summative',tBg:'#E7F5EE',tFg:'#147A50',assessor:'P. Ndlovu',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
-        {date:'09 Sep',title:'KM-04 Lean Manufacturing · paper-based test (capture)',type:'Summative',tBg:'#E7F5EE',tFg:'#147A50',assessor:'D. Khumalo',moderator:'—',status:'Capture due',...S.warn},
+        {date:'03 Sep',title:'PM-02 Quality Inspection · final observation',type:'Summative',tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)',assessor:'P. Ndlovu',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
+        {date:'09 Sep',title:'KM-04 Lean Manufacturing · paper-based test (capture)',type:'Summative',tBg:'#E7F5EE',tFg:'var(--accent-navy-dark)',assessor:'D. Khumalo',moderator:'—',status:'Capture due',...S.warn},
         {date:'17 Sep',title:'Welding NQF 3 · ISA batch capture',type:'ISA',tBg:'#FFF8EB',tFg:'#92400E',assessor:'F. van Zyl',moderator:'G. Nkuna',status:'Confirmed',...S.ok},
         {date:'14 Oct',title:'EISA · Automotive Production Technician',type:'EISA',tBg:'#FDF0F3',tFg:'#9F1239',assessor:'External (QCTO)',moderator:'External',status:'Registration',...S.warn}
       ],
@@ -937,18 +1051,18 @@ class Component extends DCLogic {
         {type:'MCQ',text:'What is the FIRST step after a minor injury in the workshop?',marks:2}
       ],
       qbankCount:6, addQ:()=>{},
-      toggleRand:()=>this.setState(s=>({rand:!s.rand})), randBg:st.rand?'#178A5C':'#C7D0DB', randLeft:st.rand?'20px':'2px',
-      toggleSeb:()=>this.setState(s=>({seb:!s.seb})), sebBg:st.seb?'#178A5C':'#C7D0DB', sebLeft:st.seb?'20px':'2px',
+      toggleRand:()=>this.setState(s=>({rand:!s.rand})), randBg:st.rand?'var(--accent-navy)':'#C7D0DB', randLeft:st.rand?'20px':'2px',
+      toggleSeb:()=>this.setState(s=>({seb:!s.seb})), sebBg:st.seb?'var(--accent-navy)':'#C7D0DB', sebLeft:st.seb?'20px':'2px',
       sebNote:st.seb?'Proctoring ON — learners must launch via Safe Exam Browser with identity check.':'Proctoring OFF — assessment opens in the standard browser.',
-      sebNoteBg:st.seb?'#E7F5EE':'#FEF3C7', sebNoteFg:st.seb?'#147A50':'#92400E',
+      sebNoteBg:st.seb?'#E7F5EE':'#FEF3C7', sebNoteFg:st.seb?'var(--accent-navy-dark)':'#92400E',
       liveRows:[
-        {title:'KM-03 OHS Quiz · window open',state:'14 in progress',c:'#178A5C',pct:62,sub:'31 of 50 submitted'},
+        {title:'KM-03 OHS Quiz · window open',state:'14 in progress',c:'var(--accent-navy)',pct:62,sub:'31 of 50 submitted'},
         {title:'KM-06 Final Exam (SEB) · sitting 2',state:'Live · proctored',c:'#9F1239',pct:38,sub:'9 of 24 submitted'},
         {title:'KM-04 Lean formative',state:'Closes 09 Sep',c:'#B45309',pct:81,sub:'39 of 48 submitted'},
-        {title:'Welding theory test',state:'Marked',c:'#1B4F8A',pct:100,sub:'28 of 28 verified'}
+        {title:'Welding theory test',state:'Marked',c:'var(--accent-blue)',pct:100,sub:'28 of 28 verified'}
       ],
       vleProgs:[
-        {title:'Automotive Production Technician',n:148,mode:'Blended',bg:'#E8F0FB',fg:'#1B4F8A'},
+        {title:'Automotive Production Technician',n:148,mode:'Blended',bg:'#E8F0FB',fg:'var(--accent-blue)'},
         {title:'Production Supervisor NQF 5',n:64,mode:'Online',bg:'#ECFAFD',fg:'#0E7490'},
         {title:'Lean Manufacturing short course',n:36,mode:'Online',bg:'#ECFAFD',fg:'#0E7490'},
         {title:'Welding Application & Practice',n:52,mode:'Contact',bg:'#EEF1F5',fg:'#5B6B7C'}
@@ -1059,11 +1173,11 @@ class Component extends DCLogic {
         {ext:'DOC',title:'TTA-QMS-025 · Appeals & irregularities',meta:'Reviewed 03 Aug 2026'}
       ],
       staffRows:[
-        {name:'R. Botha',role:'Facilitator',rBg:'#E8F0FB',rFg:'#1B4F8A',scope:'APT NQF 4 · KM-01, KM-03',contract:'Permanent',reg:'ETDP-FAC-44821'},
-        {name:'D. Khumalo',role:'Facilitator',rBg:'#E8F0FB',rFg:'#1B4F8A',scope:'APT NQF 4 · KM-04, KM-05',contract:'Permanent',reg:'ETDP-FAC-51102'},
-        {name:'S. van der Merwe',role:'Assessor',rBg:'#E7F5EE',rFg:'#147A50',scope:'APT NQF 4 · PM-01, PM-03',contract:'Permanent',reg:'QCTO-ASR-2210984'},
-        {name:'P. Ndlovu',role:'Assessor',rBg:'#E7F5EE',rFg:'#147A50',scope:'APT NQF 4 · PM-02 · Metrology',contract:'Contract',reg:'QCTO-ASR-2214471'},
-        {name:'F. van Zyl',role:'Assessor',rBg:'#E7F5EE',rFg:'#147A50',scope:'Welding NQF 3 · all practicals',contract:'Contract',reg:'QCTO-ASR-2199035'},
+        {name:'R. Botha',role:'Facilitator',rBg:'#E8F0FB',rFg:'var(--accent-blue)',scope:'APT NQF 4 · KM-01, KM-03',contract:'Permanent',reg:'ETDP-FAC-44821'},
+        {name:'D. Khumalo',role:'Facilitator',rBg:'#E8F0FB',rFg:'var(--accent-blue)',scope:'APT NQF 4 · KM-04, KM-05',contract:'Permanent',reg:'ETDP-FAC-51102'},
+        {name:'S. van der Merwe',role:'Assessor',rBg:'#E7F5EE',rFg:'var(--accent-navy-dark)',scope:'APT NQF 4 · PM-01, PM-03',contract:'Permanent',reg:'QCTO-ASR-2210984'},
+        {name:'P. Ndlovu',role:'Assessor',rBg:'#E7F5EE',rFg:'var(--accent-navy-dark)',scope:'APT NQF 4 · PM-02 · Metrology',contract:'Contract',reg:'QCTO-ASR-2214471'},
+        {name:'F. van Zyl',role:'Assessor',rBg:'#E7F5EE',rFg:'var(--accent-navy-dark)',scope:'Welding NQF 3 · all practicals',contract:'Contract',reg:'QCTO-ASR-2199035'},
         {name:'G. Nkuna',role:'Moderator',rBg:'#FDF0F3',rFg:'#9F1239',scope:'Internal moderation · all qualifications',contract:'Permanent',reg:'QCTO-MOD-118842'}
       ],
       roleRows:[
@@ -1078,7 +1192,7 @@ class Component extends DCLogic {
       nuName:st.nuName, setNuName:e=>this.setState({nuName:e.target.value,nuDone:false}),
       nuRole:st.nuRole, setNuRole:e=>this.setState({nuRole:e.target.value}),
       nuAdd:()=>{ if(this.state.nuName) this.setState(s=>({licAdded:s.licAdded+1,nuName:'',nuDone:true})); },
-      nuText:st.nuDone?'✓ Licence provisioned':'Provision licence', nuBg:st.nuDone?'#E7F5EE':'#178A5C', nuFg:st.nuDone?'#147A50':'#fff',
+      nuText:st.nuDone?'✓ Licence provisioned':'Provision licence', nuBg:st.nuDone?'#E7F5EE':'var(--accent-navy)', nuFg:st.nuDone?'var(--accent-navy-dark)':'#fff',
       eventRows:[
         {title:'Kaizen Fundamentals Workshop',kind:'Workshop',date:'28 Aug',speaker:'L. Ferreira',fee:'R 1,200',reg:52,pct:87,cap:'52/60'},
         {title:'EV Battery Assembly Masterclass',kind:'Masterclass',date:'04 Sep',speaker:'Dr N. van Wyk (uYilo)',fee:'R 1,850',reg:38,pct:76,cap:'38/50'},
@@ -1103,7 +1217,7 @@ class Component extends DCLogic {
       return {
       goDash:()=>this.go('dashboard'), goPipeline:()=>this.go('pipeline'), goReg:()=>this.go('reg'), goRisk:()=>this.go('risk'), goStats:()=>this.go('stats'), goQueue:()=>this.go('queue'),
       goSched:()=>this.go('sched'), goBuilder:()=>this.go('builder'), goAuthor:()=>this.go('author'), goVle:()=>this.go('vle'), goCentres:()=>this.go('centres'), goCert:()=>this.go('cert'),
-      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),label, go:()=>this.go(id), fg:active?'#fff':'rgba(255,255,255,.65)', bg:active?'rgba(61,201,138,.16)':'transparent', bd:active?'rgba(61,201,138,.45)':'transparent', glow:active?'0 0 14px rgba(61,201,138,.25)':'none',
+      goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),label, go:()=>this.go(id), fg:active?'#fff':'rgba(255,255,255,.65)', bg:active?'var(--accent-navy)':'transparent', bd:active?'var(--accent-navy)':'transparent', glow:'none',
         badge:String(pendingCount), badgeShow:(id==='queue'&&pendingCount>0)?'inline-block':'none'};
     });
     const tabDefs = {
@@ -1144,7 +1258,7 @@ class Component extends DCLogic {
       users:['User Provisioning','Role-based access control and named user licence usage.']
     };
     const curTab = (st.tabs||{})[st.sec];
-    const tabs = (tabDefs[st.sec]||[]).map(([id,label])=>({label, go:()=>this.setState(s=>({tabs:{...s.tabs,[st.sec]:id}})), bg:curTab===id?'#0B2C4D':'transparent', fg:curTab===id?'#fff':'#5B6B7C'}));
+    const tabs = (tabDefs[st.sec]||[]).map(([id,label])=>({label, go:()=>this.setState(s=>({tabs:{...s.tabs,[st.sec]:id}})), bg:curTab===id?'var(--accent-navy)':'transparent', fg:curTab===id?'#fff':'#5B6B7C'}));
     const licUsed = 412 + st.licAdded, licPct = Math.round(licUsed/500*100);
     const t = st.sec==='stud'?curTab:null, a = st.sec==='acad'?curTab:null, p = st.sec==='part'?curTab:null, c = st.sec==='comp'?curTab:null, pe = st.sec==='people'?curTab:null, n = st.sec==='non'?curTab:null;
     return {
@@ -1161,10 +1275,10 @@ class Component extends DCLogic {
       vPeopleStaff:st.sec==='staff'||pe==='staff', vPeopleUsers:st.sec==='users'||pe==='users',
       vNonEvents:st.sec==='events'||n==='events', vNonFin:st.sec==='fin'||n==='fin',
       kpis:[
-        {label:'Active learners',value:'386',delta:'+42 YoY',dBg:'#E7F5EE',dFg:'#147A50',sub:'Across 6 accredited programmes',c:'#178A5C'},
-        {label:'Completion rate',value:'87%',delta:'+3%',dBg:'#E7F5EE',dFg:'#147A50',sub:'Rolling 12 months, all cohorts',c:'#1B4F8A'},
-        {label:'Certificates issued',value:'96',delta:'Q3 2026',dBg:'#E8F0FB',dFg:'#1B4F8A',sub:'Next serial TTA-2026-01238',c:'#0E7490'},
-        {label:'At-risk learners',value:'7',delta:'Action needed',dBg:'#FDECEC',dFg:'#9F1239',sub:'Flagged per QMS TTA-QMS-014',c:'#B4232A'}
+        {label:'Active learners',value:'386',delta:'+42 YoY',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Across 6 accredited programmes',c:'var(--accent-navy)'},
+        {label:'Completion rate',value:'87%',delta:'+3%',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Rolling 12 months, all cohorts',c:'var(--accent-navy)'},
+        {label:'Certificates issued',value:'96',delta:'Q3 2026',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Next serial TTA-2026-01238',c:'var(--accent-navy)'},
+        {label:'At-risk learners',value:'7',delta:'Action needed',dBg:'rgba(29,73,168,0.08)',dFg:'var(--accent-blue)',sub:'Flagged per QMS TTA-QMS-014',c:'var(--accent-navy)'}
       ],
       progBarsDash:[
         {label:'Automotive Production Technician · NQF 4',n:148,pct:100},
@@ -1178,12 +1292,12 @@ class Component extends DCLogic {
       repPeriod:st.repPeriod, setRepPeriod:e=>this.setState({repPeriod:e.target.value,repDone:false}),
       genReport:()=>this.setState({repDone:true}),
       repText:st.repDone?'✓ Report generated — download PDF / XLSX':'Generate report',
-      repBg:st.repDone?'#E7F5EE':'#0B2C4D', repFg:st.repDone?'#147A50':'#fff',
+      repBg:st.repDone?'#E7F5EE':'var(--accent-navy)', repFg:st.repDone?'var(--accent-navy-dark)':'#fff',
       activity:[
-        {text:'T. Mahlangu signed off logbook entry WM-01/e2 for Lerato Mokoena (awaiting supervisor).',when:'Today 09:41',c:'#178A5C'},
-        {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'#1B4F8A'},
+        {text:'T. Mahlangu signed off logbook entry WM-01/e2 for Lerato Mokoena (awaiting supervisor).',when:'Today 09:41',c:'var(--accent-navy)'},
+        {text:'Certification batch CB-2026-014 (Welding NQF 3, 28 learners) queued for QCTO submission.',when:'Today 08:15',c:'var(--accent-blue)'},
         {text:'Incident report: SEB session terminated early — KM-06 exam, learner S. Mahlatsi (under review).',when:'Yesterday 16:02',c:'#9F1239'},
-        {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'#178A5C'},
+        {text:'merSETA grant tranche 2 (R 780,000) receipted against DG 2025/26 project.',when:'Yesterday 11:30',c:'var(--accent-navy)'},
         {text:'OHS audit completed at Workshop B — 2 minor findings, corrective actions logged.',when:'18 Aug',c:'#B45309'}
       ]
     };
