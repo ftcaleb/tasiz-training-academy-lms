@@ -319,9 +319,9 @@ a:hover { color: var(--accent-navy); }
           </sc-for>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:16px 20px;display:flex;gap:26px;flex-wrap:wrap;">
-          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">214</b> applications · 2026/27 intake</div>
-          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">38%</b> shortlist conversion</div>
-          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:#FFFFFF;font-size:15px;">1,847</b> on recruitment mailing list</div>
+          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:var(--accent-navy);font-size:15px;">214</b> applications · 2026/27 intake</div>
+          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:var(--accent-navy);font-size:15px;">38%</b> shortlist conversion</div>
+          <div style="font-size:12.5px;color:#94A3B8;"><b style="color:var(--accent-navy);font-size:15px;">1,847</b> on recruitment mailing list</div>
           <div style="flex:1;"></div>
           <div style="font-size:12.5px;color:var(--accent-blue);font-weight:600;cursor:pointer;">⬇ Export mailing list (CSV)</div>
         </div>
@@ -368,7 +368,7 @@ a:hover { color: var(--accent-navy); }
           <sc-for list="{{ studKpis }}" as="k" hint-placeholder-count="4">
             <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;">
               <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">{{ k.label }}</div>
-              <div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">{{ k.value }}</div>
+              <div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:var(--accent-navy);">{{ k.value }}</div>
               <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">{{ k.sub }}</div>
             </div>
           </sc-for>
@@ -427,7 +427,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vAcadSched }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Assessment &amp; moderation schedule · Q3 2026</div>
-          <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Date</div><div>Module · Assessment</div><div>Type</div><div>Assessor</div><div>Moderator</div><div>Status</div></div>
+          <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Date</div><div>Module · Assessment</div><div>Type</div><div>Assessor</div><div>Moderator</div><div>Status</div></div>
           <sc-for list="{{ schedRows }}" as="r" hint-placeholder-count="6">
             <div style="display:grid;grid-template-columns:100px 1.5fr 110px 1fr 1fr 120px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:13px;align-items:center;">
               <div style="color:#94A3B8;font-size:12.5px;">{{ r.date }}</div><div style="font-weight:600;font-size:12.5px;">{{ r.title }}</div><div><span style="font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:12px;background:{{ r.tBg }};color:{{ r.tFg }};">{{ r.type }}</span></div><div style="font-size:12.5px;color:#94A3B8;">{{ r.assessor }}</div><div style="font-size:12.5px;color:#94A3B8;">{{ r.moderator }}</div><div><span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:{{ r.bg }};color:{{ r.fg }};">{{ r.status }}</span></div>
@@ -560,7 +560,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vAcadCentres }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Accredited assessment centres · EISA schedule</div>
-          <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Centre</div><div>Qualification</div><div>EISA date</div><div>Learners · Pract.</div><div>Invigilator / Moderator</div><div>Status</div></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Centre</div><div>Qualification</div><div>EISA date</div><div>Learners · Pract.</div><div>Invigilator / Moderator</div><div>Status</div></div>
           <sc-for list="{{ centreRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.4fr 1.2fr 100px 150px 1fr 110px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.centre }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
@@ -582,7 +582,7 @@ a:hover { color: var(--accent-navy); }
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Certification batches</div>
             <div style="font-size:12px;font-weight:600;color:#fff;background:var(--accent-navy);padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New batch run</div>
           </div>
-          <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>Learners</div><div>Serial range</div><div>Issue date</div><div>Status</div><div>Actions</div></div>
+          <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>Learners</div><div>Serial range</div><div>Issue date</div><div>Status</div><div>Actions</div></div>
           <sc-for list="{{ certRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.5fr 90px 1.3fr 110px 110px 150px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.prog }}</div><div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;font-size:12px;">{{ r.range }}</div><div style="color:#94A3B8;">{{ r.date }}</div>
@@ -593,7 +593,7 @@ a:hover { color: var(--accent-navy); }
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">NAMB trade test numbers · artisan learners</div>
-          <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Learner</div><div>Trade</div><div>NAMB trade test no.</div><div>Status</div></div>
+          <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Learner</div><div>Trade</div><div>NAMB trade test no.</div><div>Status</div></div>
           <sc-for list="{{ nambRows }}" as="r" hint-placeholder-count="3">
             <div style="display:grid;grid-template-columns:1.3fr 1.3fr 1.2fr 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div><div style="color:#94A3B8;">{{ r.trade }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.no }}</div>
@@ -606,7 +606,7 @@ a:hover { color: var(--accent-navy); }
         <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start;">
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
             <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Sponsor &amp; funder register</div>
-            <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Sponsor</div><div>Learners</div><div>Grants received</div><div>Intervention cost</div><div>Outstanding</div></div>
+            <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Sponsor</div><div>Learners</div><div>Grants received</div><div>Intervention cost</div><div>Outstanding</div></div>
             <sc-for list="{{ sponsorRows }}" as="r" hint-placeholder-count="5">
               <div style="display:grid;grid-template-columns:1.4fr 90px 1fr 1fr 1fr;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
                 <div style="font-weight:600;">{{ r.name }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
@@ -633,7 +633,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vPartProgs }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Learning programme catalogue</div>
-          <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>NQF</div><div>Last uptake</div><div>Teach-out</div><div>Learners</div><div>ISA pass rate</div></div>
+          <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Programme</div><div>NQF</div><div>Last uptake</div><div>Teach-out</div><div>Learners</div><div>ISA pass rate</div></div>
           <sc-for list="{{ progRows }}" as="r" hint-placeholder-count="5">
             <div style="display:grid;grid-template-columns:1.6fr 60px 110px 110px 90px 140px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}</div><div style="color:#94A3B8;">{{ r.nqf }}</div><div style="color:#94A3B8;">{{ r.uptake }}</div><div style="color:#94A3B8;">{{ r.teachout }}</div><div>{{ r.n }}</div>
@@ -645,7 +645,7 @@ a:hover { color: var(--accent-navy); }
           <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">Document library</div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
-              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:#FFFFFF;border-radius:10px;">
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:var(--text-secondary);border-radius:10px;">
                 <div style="width:30px;height:30px;border-radius:8px;background:var(--bg-base);color:var(--accent-navy);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
                 <div style="flex:1;min-width:0;"><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ d.title }}</div><div style="font-size:11px;color:#64748B;">{{ d.meta }}</div></div>
               </div>
@@ -656,7 +656,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vPartHosts }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Host employer register</div>
-          <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Company</div><div>SETA approval</div><div>Learners</div><div>Sup. / Mentors</div><div>SDF contact</div><div>Logbooks</div></div>
+          <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Company</div><div>SETA approval</div><div>Learners</div><div>Sup. / Mentors</div><div>SDF contact</div><div>Logbooks</div></div>
           <sc-for list="{{ hostRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.5fr 130px 100px 130px 1.3fr 100px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
@@ -670,7 +670,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vPartProviders }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Training provider register</div>
-          <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Provider</div><div>Accreditation</div><div>Practitioners</div><div>Compliance</div><div>Payments YTD</div><div>Impl. plan 26/27</div></div>
+          <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Provider</div><div>Accreditation</div><div>Practitioners</div><div>Compliance</div><div>Payments YTD</div><div>Impl. plan 26/27</div></div>
           <sc-for list="{{ providerRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.5fr 1.2fr 110px 110px 120px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div><div style="color:#94A3B8;font-size:12px;">{{ r.accr }}</div><div>{{ r.pr }}</div>
@@ -714,7 +714,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vCompSites }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Approved training &amp; assessment sites</div>
-          <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Site</div><div>Approved for</div><div>OHS status</div><div>Last OHS audit</div><div>Next audit due</div></div>
+          <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Site</div><div>Approved for</div><div>OHS status</div><div>Last OHS audit</div><div>Next audit due</div></div>
           <sc-for list="{{ siteRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.5fr 1fr 120px 130px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.site }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.loc }}</div></div>
@@ -730,7 +730,7 @@ a:hover { color: var(--accent-navy); }
           <div style="font-family:Archivo;font-weight:600;font-size:15px;margin-bottom:12px;">QMS policies &amp; templates</div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
             <sc-for list="{{ qmsDocs }}" as="d" hint-placeholder-count="6">
-              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:#FFFFFF;border-radius:10px;">
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--bg-base);color:var(--text-secondary);border-radius:10px;">
                 <div style="width:30px;height:30px;border-radius:8px;background:var(--bg-base);color:#3DC98A;color:#3DC98A;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">{{ d.ext }}</div>
                 <div style="flex:1;min-width:0;"><div style="font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ d.title }}</div><div style="font-size:11px;color:#64748B;">{{ d.meta }}</div></div>
               </div>
@@ -741,7 +741,7 @@ a:hover { color: var(--accent-navy); }
       <sc-if value="{{ vPeopleStaff }}" hint-placeholder-val="{{ false }}">
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Facilitators, assessors &amp; internal moderators</div>
-          <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Name</div><div>Role</div><div>Qualifications · Modules</div><div>Contract</div><div>Registration no.</div></div>
+          <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Name</div><div>Role</div><div>Qualifications · Modules</div><div>Contract</div><div>Registration no.</div></div>
           <sc-for list="{{ staffRows }}" as="r" hint-placeholder-count="6">
             <div style="display:grid;grid-template-columns:1.2fr 120px 1.5fr 100px 140px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.name }}</div>
@@ -770,7 +770,7 @@ a:hover { color: var(--accent-navy); }
           </div>
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
             <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Role-based provisioning</div>
-            <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Role</div><div>Users</div><div>Access rights</div><div>Type</div></div>
+            <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Role</div><div>Users</div><div>Access rights</div><div>Type</div></div>
             <sc-for list="{{ roleRows }}" as="r" hint-placeholder-count="7">
               <div style="display:grid;grid-template-columns:1.2fr 80px 1.6fr 110px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
                 <div style="font-weight:600;">{{ r.role }}</div><div style="font-variant-numeric:tabular-nums;">{{ r.n }}</div><div style="color:#94A3B8;font-size:12px;">{{ r.rights }}</div><div style="color:#94A3B8;">{{ r.type }}</div>
@@ -785,7 +785,7 @@ a:hover { color: var(--accent-navy); }
             <div style="font-family:Archivo;font-weight:600;font-size:15px;">Seminars, workshops &amp; masterclasses · Q3–Q4 2026</div>
             <div style="font-size:12px;font-weight:600;color:#fff;background:var(--accent-navy);padding:7px 13px;border-radius:8px;cursor:pointer;">＋ New event</div>
           </div>
-          <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Date</div><div>Speaker</div><div>Fee</div><div>Registered</div><div>Capacity</div></div>
+          <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Date</div><div>Speaker</div><div>Fee</div><div>Registered</div><div>Capacity</div></div>
           <sc-for list="{{ eventRows }}" as="r" hint-placeholder-count="5">
             <div style="display:grid;grid-template-columns:1.6fr 100px 1.2fr 90px 100px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}<div style="font-size:11px;color:#64748B;font-weight:500;">{{ r.kind }}</div></div>
@@ -803,7 +803,7 @@ a:hover { color: var(--accent-navy); }
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Event financials</div>
-          <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:11px 20px;background:var(--bg-base);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Attendees</div><div>Revenue</div><div>Costs</div><div>Net</div></div>
+          <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:11px 20px;background:var(--bg-base);color:var(--text-secondary);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#64748B;border-bottom:1px solid var(--border-color);"><div>Event</div><div>Attendees</div><div>Revenue</div><div>Costs</div><div>Net</div></div>
           <sc-for list="{{ evFinRows }}" as="r" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:1.6fr 100px 130px 130px 130px;padding:13px 20px;border-bottom:1px solid var(--border-color);font-size:12.5px;align-items:center;">
               <div style="font-weight:600;">{{ r.title }}</div><div>{{ r.n }}</div><div style="font-variant-numeric:tabular-nums;color:#3DC98A;font-weight:600;">{{ r.rev }}</div><div style="font-variant-numeric:tabular-nums;color:#94A3B8;">{{ r.cost }}</div><div style="font-variant-numeric:tabular-nums;font-weight:700;">{{ r.net }}</div>
