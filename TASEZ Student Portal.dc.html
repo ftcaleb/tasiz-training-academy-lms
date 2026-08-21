@@ -134,7 +134,9 @@ a:hover { color: var(--accent-navy); }
   gap: 10px;
   padding: 8px 12px;
   border-radius: 8px;
-  color: var(--text-primary);
+  color: var(--accent-navy);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -143,7 +145,8 @@ a:hover { color: var(--accent-navy); }
 }
 .nav-dropdown-item:hover {
   background: var(--bg-base);
-  color: var(--accent-blue);
+  color: var(--accent-navy);
+  border-color: var(--border-color);
 }
 
 .student-kpi-pill {
@@ -215,7 +218,7 @@ a:hover { color: var(--accent-navy); }
               <div style="font-family:Archivo;font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-.01em;">{{ greetingText }}</div>
               <div style="font-size:13.5px;font-weight:600;color:var(--text-tertiary);white-space:nowrap;">{{ todayDateStr }}</div>
             </div>
-            <div style="font-size:13.5px;color:var(--text-secondary);margin-top:6px;">Occupational Certificate: Automotive Production Technician · NQF 4 · QCTO accredited</div>
+            <div style="display:inline-flex;align-items:center;margin-top:8px;padding:5px 13px;border-radius:12px;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);font-size:12.5px;font-weight:600;">Occupational Certificate: Automotive Production Technician · NQF 4 · QCTO accredited</div>
           </div>
           <div style="display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:12px 20px 12px 14px;">
             <svg width="72" height="72" viewBox="0 0 84 84">
