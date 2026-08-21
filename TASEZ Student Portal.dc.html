@@ -320,11 +320,11 @@ a:hover { color: var(--accent-navy); }
             <div>
               <div style="font-family:Archivo;font-weight:700;font-size:20px;">Occupational Certificate: Automotive Production Technician</div>
               <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;">
-                <span style="font-size:11.5px;font-weight:600;background:var(--accent-navy);color:var(--accent-blue);border:1px solid var(--border-color);padding:4px 10px;border-radius:20px;">NQF Level 4</span>
-                <span style="font-size:11.5px;font-weight:600;background:var(--accent-navy);color:var(--accent-blue);border:1px solid var(--border-color);padding:4px 10px;border-radius:20px;">SAQA ID 101234</span>
-                <span style="font-size:11.5px;font-weight:600;background:var(--accent-navy);color:var(--accent-blue);color:var(--accent-blue);padding:4px 10px;border-radius:20px;">QCTO Accredited</span>
-                <span style="font-size:11.5px;font-weight:600;background:var(--bg-base);color:var(--text-tertiary);padding:4px 10px;border-radius:20px;">18 months</span>
-                <span style="font-size:11.5px;font-weight:600;background:var(--bg-base);color:var(--text-tertiary);padding:4px 10px;border-radius:20px;">320 credits</span>
+                <span style="font-size:11.5px;font-weight:600;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);padding:4px 12px;border-radius:20px;">NQF Level 4</span>
+                <span style="font-size:11.5px;font-weight:600;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);padding:4px 12px;border-radius:20px;">SAQA ID 101234</span>
+                <span style="font-size:11.5px;font-weight:600;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);padding:4px 12px;border-radius:20px;">QCTO Accredited</span>
+                <span style="font-size:11.5px;font-weight:600;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);padding:4px 12px;border-radius:20px;">18 months</span>
+                <span style="font-size:11.5px;font-weight:600;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);padding:4px 12px;border-radius:20px;">320 credits</span>
               </div>
             </div>
             <div style="text-align:right;min-width:170px;">
@@ -801,10 +801,10 @@ a:hover { color: var(--accent-navy); }
                 <div style="font-size:12px;font-weight:700;color:var(--text-primary);padding-bottom:10px;border-bottom:1px solid var(--border-color);">{{ d.name }}</div>
                 <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
                   <sc-for list="{{ d.list }}" as="s" hint-placeholder-count="2">
-                    <div style="background:{{ s.bg }};border-left:3px solid {{ s.bar }};border-radius:8px;padding:9px 10px;border:1px solid rgba(255,255,255,0.06);">
-                      <div style="font-size:10.5px;font-weight:700;color:{{ s.bar }};">{{ s.time }} · {{ s.type }}</div>
-                      <div style="font-size:12px;font-weight:600;margin-top:3px;line-height:1.35;color:var(--text-primary);">{{ s.title }}</div>
-                      <div style="font-size:10.5px;color:var(--text-tertiary);margin-top:3px;">{{ s.meta }}</div>
+                    <div style="background:{{ s.bg }};border-left:3px solid var(--accent-navy);border-radius:8px;padding:9px 10px;border:1px solid var(--border-color);">
+                      <div style="font-size:10.5px;font-weight:700;color:var(--accent-navy);">{{ s.time }} · {{ s.type }}</div>
+                      <div style="font-size:12px;font-weight:700;margin-top:3px;line-height:1.35;color:var(--text-primary);">{{ s.title }}</div>
+                      <div style="font-size:10.5px;color:var(--text-secondary);font-weight:600;margin-top:3px;">{{ s.meta }}</div>
                     </div>
                   </sc-for>
                 </div>
@@ -866,7 +866,7 @@ a:hover { color: var(--accent-navy); }
               </div>
             </div>
 
-            # SIDE PANEL BENTO DOSSIER
+            
             <div style="display:flex;flex-direction:column;gap:16px;">
               <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;padding:22px;color:var(--text-primary);box-shadow: none;">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
@@ -874,7 +874,7 @@ a:hover { color: var(--accent-navy); }
                     <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-blue);">Selected Schedule</div>
                     <div style="font-family:Archivo;font-weight:700;font-size:18px;margin-top:4px;">20 August 2026</div>
                   </div>
-                  <span style="font-size:11px;font-weight:700;background:var(--accent-navy);color:var(--accent-blue);padding:4px 10px;border-radius:12px;border:1px solid var(--border-color);">2 Sessions</span>
+                  <span style="font-size:11px;font-weight:700;background:var(--bg-base);color:var(--accent-navy);padding:4px 10px;border-radius:12px;border:1px solid var(--border-color);">2 Sessions</span>
                 </div>
 
                 <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
@@ -1118,7 +1118,7 @@ class Component extends DCLogic {
       {day:4,time:'08:00–16:00',type:'Workplace',code:'WM-01',title:'Workplace day — Silverton Auto Components',meta:'Rosslyn plant · J. Pretorius'},
       {day:4,time:'16:00–16:30',type:'Assessment',code:'WM-01',title:'Logbook week sign-off — supervisor',meta:'J. Pretorius · Rosslyn plant'}
     ];
-    const tCol = {Class:{bar:'#38BDF8',bg:'rgba(56,189,248,0.14)'},Practical:{bar:'var(--accent-blue)',bg:'rgba(29,73,168,0.08)'},Workplace:{bar:'#C084FC',bg:'rgba(192,132,252,0.14)'},Virtual:{bar:'var(--accent-blue)',bg:'rgba(29,73,168,0.08)'},Assessment:{bar:'#FBBF24',bg:'rgba(245,158,11,0.14)'},Moderation:{bar:'#FCA5A5',bg:'rgba(239,68,68,0.14)'}};
+    const tCol = {Class:{bar:'var(--accent-navy)',bg:'rgba(29,73,168,0.08)'},Practical:{bar:'var(--accent-navy)',bg:'rgba(29,73,168,0.08)'},Workplace:{bar:'var(--accent-navy)',bg:'var(--bg-base)'},Virtual:{bar:'var(--accent-navy)',bg:'rgba(29,73,168,0.08)'},Assessment:{bar:'var(--accent-navy)',bg:'var(--bg-base)'},Moderation:{bar:'var(--accent-navy)',bg:'var(--bg-base)'}};
     const weeks = [week0,week1];
     const wkLabels = ['17 – 21 August 2026','24 – 28 August 2026'];
     const dayNames = st.ttWeekIdx===0 ? ['Mon 17','Tue 18','Wed 19','Thu 20','Fri 21'] : ['Mon 24','Tue 25','Wed 26','Thu 27','Fri 28'];
@@ -1133,9 +1133,9 @@ class Component extends DCLogic {
       return {
         d: d || '',
         dots: (d && monthEv[d] || []).map(c => ({c})),
-        border: isToday ? 'var(--accent-blue)' : (isActive ? 'var(--border-color)' : 'rgba(255,255,255,0.07)'),
-        bg: isToday ? 'var(--accent-navy)' : (isActive ? 'var(--accent-blue)' : (d ? 'var(--bg-card)' : 'transparent')),
-        fg: (isToday || isActive) ? '#FFFFFF' : '#94A3B8',
+        border: isToday ? 'var(--accent-navy)' : 'var(--border-color)',
+        bg: isToday ? 'var(--accent-navy)' : (d ? 'var(--bg-card)' : 'transparent'),
+        fg: isToday ? '#FFFFFF' : 'var(--text-primary)',
         glow:'none'
       };
     });
@@ -1157,7 +1157,7 @@ class Component extends DCLogic {
 
     const atRisk = this.props.atRisk ?? false;
     const compTabs = [
-      {n:1,label:'Knowledge Modules',pct:45,color:'#1B4F8A',sub:'2 of 6 modules complete · 40 / 108 credits',key:'K'},
+      {n:1,label:'Knowledge Modules',pct:45,color:'var(--accent-navy)',sub:'2 of 6 modules complete · 40 / 108 credits',key:'K'},
       {n:2,label:'Practical Modules',pct:55,color:'var(--accent-navy)',sub:'1 of 3 modules competent · 88 / 150 hours',key:'P'},
       {n:3,label:'Work Experience',pct:43,color:'#0B2C4D',sub:'312 / 720 workplace hours logged',key:'W'}
     ].map(t=>({...t, go:()=>this.setState({tab:t.key,screen:'course'}), border:st.tab===t.key&&st.screen==='course'?t.color:'#E3E8EF'}));
