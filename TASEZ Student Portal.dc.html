@@ -188,6 +188,13 @@ a:hover { color: var(--accent-navy); }
   color: var(--accent-blue) !important;
   border: 1px solid rgba(29, 73, 168, 0.15) !important;
 }
+
+.nav-dropdown-item.active {
+  background: rgba(29, 73, 168, 0.1) !important;
+  color: var(--accent-navy) !important;
+  font-weight: 700 !important;
+  border-left: 3px solid var(--accent-navy) !important;
+}
 </style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column;">
@@ -211,10 +218,10 @@ a:hover { color: var(--accent-navy); }
         Academics <span style="font-size:10px;opacity:0.7;">▼</span>
       </div>
       <div class="nav-dropdown-menu">
-        <div class="nav-dropdown-item" onClick="{{ goCourse }}"> My Coursework</div>
-        <div class="nav-dropdown-item" onClick="{{ goProg }}"> Progress &amp; Results</div>
-        <div class="nav-dropdown-item" onClick="{{ goTime }}"> Timetable &amp; Schedule</div>
-        <div class="nav-dropdown-item" onClick="{{ goNon }}"> Non-Accredited Events</div>
+        <div class="nav-dropdown-item {{ sCourse ? 'active' : '' }}" onClick="{{ goCourse }}">My Coursework</div>
+        <div class="nav-dropdown-item {{ sProg ? 'active' : '' }}" onClick="{{ goProg }}">Progress &amp; Results</div>
+        <div class="nav-dropdown-item {{ sTime ? 'active' : '' }}" onClick="{{ goTime }}">Timetable &amp; Schedule</div>
+        <div class="nav-dropdown-item {{ sNon ? 'active' : '' }}" onClick="{{ goNon }}">Non-Accredited Events</div>
       </div>
     </div>
 
