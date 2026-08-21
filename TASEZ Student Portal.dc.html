@@ -666,7 +666,7 @@ a:hover { color: var(--accent-navy); }
           <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Paid to date</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:8px;color:var(--accent-blue);">{{ finPaid }}</div><div style="font-size:11.5px;color:var(--text-secondary);margin-top:4px;">{{ finPaidSub }}</div></div>
         </div>
         <sc-if value="{{ finSponsored }}" hint-placeholder-val="{{ true }}">
-          <div style="background:var(--accent-navy);color:var(--accent-blue);border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px;font-size:13px;color:var(--accent-navy-dark);line-height:1.6;"><b>Sponsor: merSETA Discretionary Grant 2025/26</b> — covers R 78,000.00 (82.5%) of the qualification cost. Your self-funded portion is R 16,500.00, payable in instalments.</div>
+          <div style="background:var(--accent-navy);border:1px solid var(--accent-navy-dark);border-radius:12px;padding:14px 18px;font-size:13px;color:#FFFFFF;line-height:1.6;"><b style="color:#FFFFFF;">Sponsor: merSETA Discretionary Grant 2025/26</b> — covers R 78,000.00 (82.5%) of the qualification cost. Your self-funded portion is R 16,500.00, payable in instalments.</div>
         </sc-if>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:16px 20px;font-family:Archivo;font-weight:600;font-size:15px;border-bottom:1px solid var(--border-color);">Payment history</div>
@@ -923,7 +923,7 @@ a:hover { color: var(--accent-navy); }
           <sc-for list="{{ events }}" as="e" hint-placeholder-count="4">
             <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
               <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:12px;background:var(--accent-navy);color:var(--accent-blue);border:1px solid var(--border-color);">{{ e.kind }}</span>
+                <span class="student-kpi-pill" style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:12px;background:rgba(29,73,168,0.08) !important;color:var(--accent-blue) !important;border:1px solid rgba(29,73,168,0.15) !important;">{{ e.kind }}</span>
                 <div style="font-weight:700;font-size:14px;color:var(--accent-blue);">{{ e.cost }}</div>
               </div>
               <div style="font-family:Archivo;font-weight:600;font-size:16px;margin-top:10px;">{{ e.title }}</div>
@@ -938,7 +938,7 @@ a:hover { color: var(--accent-navy); }
             <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;margin-bottom:8px;">
               <span style="color:var(--accent-blue);font-weight:700;">✓</span>
               <div style="flex:1;"><div style="font-size:13.5px;font-weight:600;">{{ r.title }}</div><div style="font-size:12px;color:var(--text-tertiary);margin-top:2px;">{{ r.date }} · {{ r.venue }}</div></div>
-              <span style="font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--accent-navy);color:var(--accent-blue);color:var(--accent-blue);">Confirmed</span>
+              <span class="student-kpi-pill" style="font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:20px;background:rgba(29,73,168,0.08) !important;color:var(--accent-blue) !important;border:1px solid rgba(29,73,168,0.15) !important;">Confirmed</span>
             </div>
           </sc-for>
         </div>
@@ -1150,7 +1150,7 @@ class Component extends DCLogic {
     const events = evDefs.map(e=>{
       const reg = !!st.registered[e.id];
       return {...e, register:()=>this.setState(s=>({registered:{...s.registered,[e.id]:true}})),
-        btnText:reg?'✓ Registered':'Register', btnBg:reg?'#F4F7FC':'#0B2C4D', btnFg:reg?'var(--accent-navy)':'#fff', btnBorder:reg?'#E5E7EB':'#0B2C4D'};
+        btnText:reg?'✓ Registered':'Register', btnBg:reg?'var(--bg-base)':'var(--accent-navy)', btnFg:reg?'var(--accent-navy)':'#FFFFFF', btnBorder:reg?'var(--border-color)':'var(--accent-navy)'};
     });
     const regEvents = [{title:'Kaizen Fundamentals Workshop',date:'28 Aug 2026',venue:'Room 3.2, TTA Campus'},
       ...evDefs.filter(e=>st.registered[e.id]).map(e=>({title:e.title,date:e.date,venue:e.venue}))];
