@@ -22,7 +22,7 @@ a{color:#3DC98A;text-decoration:none;} a:hover{color:#178A5C;}
   .tubelight-lamp { position:absolute; top:-6px; left:50%; transform:translateX(-50%); width:30px; height:3.5px; background:#3DC98A; border-radius:9999px; box-shadow:0 -2px 10px #3DC98A,0 0 16px #3DC98A,0 0 24px rgba(61,201,138,0.8); }
   
   .nav-dropdown { position:relative; display:flex; align-items:center; }
-  .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); margin-top:8px; background:rgba(8,25,45,0.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(61,201,138,0.35); border-radius:18px; padding:8px; box-shadow:0 20px 48px rgba(0,0,0,0.7),0 0 20px rgba(61,201,138,0.15); min-width:210px; display:flex; flex-direction:column; gap:4px; opacity:0; pointer-events:none; transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index:1000; }
+  .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(12px); margin-top:0; padding-top:8px; background:rgba(8,25,45,0.95); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(61,201,138,0.35); border-radius:18px; padding:8px; box-shadow:0 20px 48px rgba(0,0,0,0.7),0 0 20px rgba(61,201,138,0.15); min-width:210px; display:flex; flex-direction:column; gap:4px; opacity:0; pointer-events:none; transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1); z-index:1000; }
   .nav-dropdown:hover .nav-dropdown-menu { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
   .nav-dropdown-item { display:flex; align-items:center; gap:10px; padding:9px 14px; border-radius:10px; color:#E2E8F0; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.15s; white-space:nowrap; }
   .nav-dropdown-item:hover { background:rgba(61,201,138,0.16); color:#3DC98A; }
@@ -1123,7 +1123,25 @@ class Component extends DCLogic {
       part:['Sponsors, Programmes & Partners','Funders, learning programme catalogue, host employers and training providers'],
       comp:['TTA Accreditation & Compliance','Accreditation scope, approved sites, OHS status and QMS records'],
       people:['Teaching & Assessment Staff','Staff registers, access rights and 500-licence administration'],
-      non:['Non-Accredited Programmes','Seminars, workshops and masterclasses with registration and financials']
+      non:['Non-Accredited Programmes','Seminars, workshops and masterclasses with registration and financials'],
+
+      dashboard:['Management Dashboard','Academy-wide statistics, intake pipeline and key performance metrics.'],
+      pipeline:['Recruitment Pipeline','Applications, shortlisting and registration pipeline for 2026/27.'],
+      reg:['Learner Register','Enrolled learners across all qualifications, sponsors and projects.'],
+      risk:['At-Risk Learners','Learners flagged for attendance, assessment or logbook early intervention.'],
+      stats:['Intake Statistics','Geographic, demographic and cohort distribution analysis.'],
+      sched:['Assessment Schedule','Formative, summative and moderation calendar.'],
+      builder:['Curriculum Builder','Structure and module layout for accredited qualifications.'],
+      author:['Question Bank','Item bank for online knowledge quizzes and Safe Exam Browser tests.'],
+      vle:['VLE Tracking','Real-time assessment tracking and blended learning analytics.'],
+      centres:['EISA Assessment Centres','Accredited assessment sites and invigilator allocation.'],
+      sponsors:['Sponsor Register','Grants, funding agreements and financial summaries per sponsor.'],
+      progs:['Programme Catalogue','Accredited and short-course learning programmes.'],
+      hosts:['Host Employers','Workplace learning host companies and SETA agreements.'],
+      providers:['Training Providers','Co-delivery partners, SDP accreditations and compliance.'],
+      accr:['SETA Accreditation','QCTO SDP accreditation status and audit records.'],
+      staff:['Facilitators & Assessors','Registered facilitators, assessors and internal moderators.'],
+      users:['User Provisioning','Role-based access control and named user licence usage.']
     };
     const curTab = (st.tabs||{})[st.sec];
     const tabs = (tabDefs[st.sec]||[]).map(([id,label])=>({label, go:()=>this.setState(s=>({tabs:{...s.tabs,[st.sec]:id}})), bg:curTab===id?'#0B2C4D':'transparent', fg:curTab===id?'#fff':'#5B6B7C'}));
@@ -1135,13 +1153,13 @@ class Component extends DCLogic {
       goSponsors:()=>this.go('sponsors'), goProgs:()=>this.go('progs'), goHosts:()=>this.go('hosts'), goProviders:()=>this.go('providers'), goAccr:()=>this.go('accr'), goStaff:()=>this.go('staff'), goUsers:()=>this.go('users'),
       nav, tabs, hasTabs:tabs.length>0,
       secTitle:secMeta[st.sec][0], secDesc:secMeta[st.sec][1],
-      vDash:st.sec==='dash', vQueue:st.sec==='queue', vCert:st.sec==='cert',
-      vStudPipeline:t==='pipeline', vStudReg:t==='reg', vStudRisk:t==='risk', vStudStats:t==='stats',
-      vAcadSched:a==='sched', vAcadBuilder:a==='builder', vAcadAuthor:a==='author', vAcadVle:a==='vle', vAcadCentres:a==='centres',
-      vPartSponsors:p==='sponsors', vPartProgs:p==='progs', vPartHosts:p==='hosts', vPartProviders:p==='providers',
-      vCompAccr:c==='accr', vCompSites:c==='sites', vCompQms:c==='qms',
-      vPeopleStaff:pe==='staff', vPeopleUsers:pe==='users',
-      vNonEvents:n==='events', vNonFin:n==='fin',
+      vDash:st.sec==='dash'||st.sec==='dashboard', vQueue:st.sec==='queue', vCert:st.sec==='cert',
+      vStudPipeline:st.sec==='pipeline'||t==='pipeline', vStudReg:st.sec==='reg'||t==='reg', vStudRisk:st.sec==='risk'||t==='risk', vStudStats:st.sec==='stats'||t==='stats',
+      vAcadSched:st.sec==='sched'||a==='sched', vAcadBuilder:st.sec==='builder'||a==='builder', vAcadAuthor:st.sec==='author'||a==='author', vAcadVle:st.sec==='vle'||a==='vle', vAcadCentres:st.sec==='centres'||a==='centres',
+      vPartSponsors:st.sec==='sponsors'||p==='sponsors', vPartProgs:st.sec==='progs'||p==='progs', vPartHosts:st.sec==='hosts'||p==='hosts', vPartProviders:st.sec==='providers'||p==='providers',
+      vCompAccr:st.sec==='accr'||c==='accr', vCompSites:st.sec==='sites'||c==='sites', vCompQms:st.sec==='qms'||c==='qms',
+      vPeopleStaff:st.sec==='staff'||pe==='staff', vPeopleUsers:st.sec==='users'||pe==='users',
+      vNonEvents:st.sec==='events'||n==='events', vNonFin:st.sec==='fin'||n==='fin',
       kpis:[
         {label:'Active learners',value:'386',delta:'+42 YoY',dBg:'#E7F5EE',dFg:'#147A50',sub:'Across 6 accredited programmes',c:'#178A5C'},
         {label:'Completion rate',value:'87%',delta:'+3%',dBg:'#E7F5EE',dFg:'#147A50',sub:'Rolling 12 months, all cohorts',c:'#1B4F8A'},
