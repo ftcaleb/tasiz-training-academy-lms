@@ -108,8 +108,8 @@ a:hover { color: var(--accent-navy); }
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  margin-top: 6px;
+  transform: translateX(-50%) translateY(4px);
+  margin-top: 2px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -120,10 +120,20 @@ a:hover { color: var(--accent-navy); }
   gap: 2px;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.15s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 1000;
 }
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -10px;
+  right: -10px;
+  height: 24px;
+  background: transparent;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu:hover {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);

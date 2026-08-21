@@ -98,8 +98,8 @@ a:hover { color: var(--accent-navy); }
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(8px);
-  margin-top: 6px;
+  transform: translateX(-50%) translateY(4px);
+  margin-top: 2px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -110,10 +110,20 @@ a:hover { color: var(--accent-navy); }
   gap: 2px;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.15s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 1000;
 }
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: -10px;
+  right: -10px;
+  height: 24px;
+  background: transparent;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown-menu:hover {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
@@ -573,9 +583,9 @@ a:hover { color: var(--accent-navy); }
       </sc-if>
       <sc-if value="{{ vCert }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Issued this quarter</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:#FFFFFF;">96</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Q3 2026 · 3 programmes</div></div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Next serial number</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:11px;color:#FFFFFF;font-variant-numeric:tabular-nums;">TTA-2026-01238</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">Auto-generated · tamper-evident register</div></div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748B;">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:var(--accent-navy);">5</div><div style="font-size:12px;color:#94A3B8;margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Issued this quarter</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:var(--accent-navy);">96</div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">Q3 2026 · 3 programmes</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Next serial number</div><div style="font-family:Archivo;font-weight:700;font-size:20px;margin-top:11px;color:var(--accent-navy);font-variant-numeric:tabular-nums;">TTA-2026-01238</div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">Auto-generated · tamper-evident register</div></div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:18px;"><div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);">Pending external requests</div><div style="font-family:Archivo;font-weight:700;font-size:24px;margin-top:9px;color:var(--accent-navy);">5</div><div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">3 QCTO certification · 2 NAMB trade test</div></div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);overflow:hidden;">
           <div style="padding:15px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);">
@@ -615,18 +625,55 @@ a:hover { color: var(--accent-navy); }
             </sc-for>
             <div style="padding:13px 20px;font-size:12px;color:var(--accent-blue);font-weight:600;cursor:pointer;">⬇ Quarterly sponsor report · ⬇ Annual financial statement</div>
           </div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;">
-            <div style="font-family:Archivo;font-weight:600;font-size:15px;">Sponsor locations</div>
-            <div style="margin-top:12px;background:var(--bg-base);border:1px solid var(--border-color);border-radius:12px;height:190px;position:relative;overflow:hidden;">
-              <div style="position:absolute;inset:0;background:var(--bg-base);"></div>
-              <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
-                <div title="{{ p.name }}" style="position:absolute;left:{{ p.x }}%;top:{{ p.y }}%;width:12px;height:12px;border-radius:50%;background:var(--accent-navy);border:2px solid #fff;box-shadow:0 0 10px var(--accent-navy);cursor:pointer;"></div>
-              </sc-for>
-              <div style="position:absolute;bottom:8px;left:12px;font-size:10.5px;color:#64748B;font-weight:600;">Gauteng · Tshwane metro (illustrative)</div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;box-shadow: none;color:var(--text-primary);padding:20px;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <div style="font-family:Archivo;font-weight:700;font-size:16px;">Sponsor &amp; Campus Map</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Gauteng regional training network</div>
+              </div>
+              <span style="font-size:11px;font-weight:700;background:var(--bg-base);color:var(--accent-navy);padding:4px 10px;border-radius:12px;border:1px solid var(--border-color);">5 Active Nodes</span>
             </div>
-            <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
-              <div style="display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid var(--border-color);"><span style="font-weight:600;">{{ p.name }}</span><span style="color:#64748B;">{{ p.loc }}</span></div>
-            </sc-for>
+
+            <!-- Enhanced Vector Map Area -->
+            <div style="background:var(--bg-base);border:1px solid var(--border-color);border-radius:14px;height:210px;position:relative;overflow:hidden;">
+              <svg width="100%" height="100%" style="position:absolute;inset:0;opacity:0.25;" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="mapGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                  <path d="M 30 0 L 0 0 0 30" fill="none" stroke="var(--accent-navy)" stroke-width="0.8"></path>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#mapGrid)"></rect>
+                <path d="M 20 50 Q 150 80 300 60 T 600 120" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-dasharray="4 4"></path>
+                <path d="M 100 180 Q 250 120 400 150 T 550 40" fill="none" stroke="var(--accent-navy)" stroke-width="1.5" stroke-dasharray="3 3"></path>
+              </svg>
+
+              <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
+                <div title="{{ p.name }} ({{ p.loc }})" style="position:absolute;left:{{ p.x }}%;top:{{ p.y }}%;transform:translate(-50%,-50%);cursor:pointer;display:flex;align-items:center;gap:6px;z-index:2;">
+                  <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+                    <div style="position:absolute;width:20px;height:20px;border-radius:50%;background:rgba(29,73,168,0.25);animation:ping 2s cubic-bezier(0,0,0.2,1) infinite;"></div>
+                    <div style="width:12px;height:12px;border-radius:50%;background:var(--accent-navy);border:2.5px solid #FFFFFF;box-shadow:0 2px 8px rgba(10,23,51,0.3);"></div>
+                  </div>
+                  <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:6px;padding:2px 8px;font-size:10.5px;font-weight:700;color:var(--accent-navy);white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.06);">{{ p.name }}</div>
+                </div>
+              </sc-for>
+              <div style="position:absolute;bottom:8px;left:12px;font-size:10.5px;color:var(--text-secondary);font-weight:600;background:var(--bg-card);padding:3px 8px;border-radius:6px;border:1px solid var(--border-color);"> Tshwane &amp; JHB Corridor</div>
+            </div>
+
+            <!-- Enhanced Location Cards List -->
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-base);border:1px solid var(--border-color);border-radius:10px;transition:all 0.15s ease;">
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="width:30px;height:30px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--accent-navy);font-weight:700;"></div>
+                    <div>
+                      <div style="font-size:13px;font-weight:700;color:var(--text-primary);">{{ p.name }}</div>
+                      <div style="font-size:11.5px;color:var(--text-secondary);margin-top:1px;">{{ p.loc }}</div>
+                    </div>
+                  </div>
+                  <div style="text-align:right;">
+                    <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:var(--bg-card);color:var(--accent-navy);border:1px solid var(--border-color);">{{ p.n }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
           </div>
         </div>
       </sc-if>
